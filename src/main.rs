@@ -25,9 +25,7 @@ fn main() {
     while index < array.len() {
         println!("{}",array[index]);
         index+=1;
-
     }
-
 
 
 }
