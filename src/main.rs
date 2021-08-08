@@ -50,6 +50,7 @@ fn main() {
     println!("The first word is: {}", word);
 
     // Struct
+    #[derive(Debug)]
     struct User {
         username: String,
         email: String,
@@ -65,6 +66,18 @@ fn main() {
     };
 
     println!("{}", user1.email);
+
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+    let made_user = build_user(String::from("aaa@co.jp"), String::from("Tom"));
+
+println!("{:?}", made_user);
 
 
 
@@ -86,5 +99,4 @@ fn first_word(s: &String) -> &str {
 
     &s[..]
 }
-
 
