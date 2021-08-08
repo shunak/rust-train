@@ -68,7 +68,6 @@ fn main() {
 
 
 
-
 }
 
 fn calc_length(s: &String) -> usize {
