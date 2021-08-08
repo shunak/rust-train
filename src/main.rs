@@ -26,6 +26,19 @@ fn main() {
         println!("{}",array[index]);
         index+=1;
     }
+    
+    for element in array.iter(){
+        println!("{}",element);
+    }
+
+
+    // move
+    let s1 = String::from("hello");
+    let s2 = s1;
+    println!("{}",s2);
+
+
+
 
 
 }
