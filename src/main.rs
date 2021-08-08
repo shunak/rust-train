@@ -38,7 +38,12 @@ fn main() {
     println!("{}",s2);
 
 
+    // reference & borrow
+    let s3 = String::from("hello");
+    let len = calc_length(&s3); // don't move s3. because &s3, reference for s3 is passed.
+    println!("The length of '{}' is {}.", s3, len);
+}
 
-
-
+fn calc_length(s: &String) -> usize {
+    s.len()
 }
