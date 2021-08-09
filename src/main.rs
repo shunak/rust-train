@@ -116,7 +116,6 @@ fn main() {
         Alaska,
     }
 
-
     enum Coin {
         Penny,
         Nickel,
@@ -143,6 +142,15 @@ fn main() {
         let coin_value2 = value_in_cents(Coin::Quarter(UsState::Alaska));
 
         println!("{}",coin_value2);
+
+        let mut count =0;
+        let coin = Coin::Quarter(UsState::Alaska);
+        match coin {
+                Coin::Quarter(state) => println!("This is a State quarter from {:?}!",state),
+                _ => count += 1,
+        }
+
+
 
 }
 
