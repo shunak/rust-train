@@ -67,17 +67,40 @@ fn main() {
 
     println!("{}", user1.email);
 
-fn build_user(email: String, username: String) -> User {
-    User {
-        email,
-        username,
-        active: true,
-        sign_in_count: 1,
+    fn build_user(email: String, username: String) -> User {
+        User {
+            email,
+            username,
+            active: true,
+            sign_in_count: 1,
+         }
     }
-}
     let made_user = build_user(String::from("aaa@co.jp"), String::from("Tom"));
+    println!("{:?}", made_user);
 
-println!("{:?}", made_user);
+
+    #[derive(Debug)]
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+
+    impl Rectangle {
+        fn area(&self) -> u32 {
+            self.width * self.height
+        }
+    }
+    
+    let rect1 = Rectangle{ width:30, height:50};
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+        );
+
+
+
+
 
 
 
