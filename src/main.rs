@@ -1,4 +1,13 @@
+use std::collections::HashMap;
+
+
 fn main() {
+    let mut map = HashMap::new();
+    map.insert(1,2);
+    map.insert(2,5);
+    println!("{:?}",map);
+
+
 
     println!("Hello, world!");
 
