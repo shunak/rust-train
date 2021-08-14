@@ -1,3 +1,4 @@
+// Modules
 mod front_of_house {
    pub mod hosting {
       pub fn add_to_waitlist(){}
@@ -13,9 +14,6 @@ mod front_of_house {
     }
 }
 
-
-fn serve_order() {}
-
 mod back_of_house {
     fn fix_incorrect_order(){
         cook_order();
@@ -23,10 +21,47 @@ mod back_of_house {
     }
 
     fn cook_order(){}
+
+    pub struct Breakfast {
+        pub toast: String,
+        seasonal_fruit: String,
+    }
+
+    impl Breakfast {
+        pub fn summer(toast: &str) -> Breakfast {
+            Breakfast{
+                toast: String::from(toast),
+                seasonal_fruit: String::from("peaches"),
+            }
+        }
+    }
+
+
+    pub enum Appetizer {
+        Soup,
+        Salad,
+    }
+
 }
 
 
+
+fn serve_order() {}
+
+
 pub fn eat_at_restaurant(){
+    
+    let mut meal = back_of_house::Breakfast::summer("Rye");
+    meal.toast = String::from("Wheat");
+    println!("I'd like {} toast please", meal.toast);
+
+    // meal.seasonal_fruit = String::from("Blueberries"); // This operation is prohibitted. Because, seasonal_fruit property is not pub
+    
+    let order1 = back_of_house::Appetizer::Soup;
+    let order2 = back_of_house::Appetizer::Salad;
+
+
+
     // Absolute path
     crate::front_of_house::hosting::add_to_waitlist();
 
@@ -34,3 +69,13 @@ pub fn eat_at_restaurant(){
     front_of_house::hosting::add_to_waitlist();
 
 }
+
+
+
+
+
+
+
+
+
+
