@@ -8,7 +8,6 @@ fn main() {
     println!("{:?}",map);
 
 
-
     println!("Hello, world!");
 
     let s = 5; // Declara variable
