@@ -2,6 +2,23 @@ use std::collections::HashMap;
 
 
 fn main() {
+    let v: Vec<i32> = Vec::new();
+    let v = vec![1,2,3];
+    println!("{:?}",v);
+    let mut v = Vec::new();
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+    println!("{:?}",v);
+
+    let v = vec![1,2,3,4,5];
+    let third: Option<&i32> = v.get(2);
+    let third: &i32 = &v[2];
+    println!("{:?}",third);
+
+
+
     let mut map = HashMap::new();
     map.insert(1,2);
     map.insert(2,5);

@@ -1,1 +1,1 @@
-/root/rust-train/restaurant/target/debug/librestaurant.rlib: /root/rust-train/restaurant/src/lib.rs
+/root/rust-train/restaurant/target/debug/librestaurant.rlib: /root/rust-train/restaurant/src/front_of_house/hosting.rs /root/rust-train/restaurant/src/front_of_house.rs /root/rust-train/restaurant/src/lib.rs
