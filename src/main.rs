@@ -16,6 +16,41 @@ fn main() {
     let third: Option<&i32> = v.get(2);
     let third: &i32 = &v[2];
     println!("{:?}",third);
+    let v = vec![100,32,57];
+    for i in &v {
+        println!("{:?}",i);
+    }
+
+
+    let mut v = vec![100,32,67];
+    for i in &mut v {
+        *i += 50;
+        println!("{:?}",i);
+    }
+
+    #[derive(Debug)]
+    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+    
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Float(3.14),
+        SpreadsheetCell::Text(String::from("Red")),
+    ];
+
+    println!("{:?}",row);
+
+
+
+
+
+
+
+
 
 
 
