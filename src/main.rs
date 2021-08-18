@@ -2,6 +2,12 @@ use std::collections::HashMap;
 
 
 fn main() {
+    let mut s = String::new();
+    let data  = "initial commit";
+    let s = data.to_string();
+    println!("{:?}",s);
+
+
     let v: Vec<i32> = Vec::new();
     let v = vec![1,2,3];
     println!("{:?}",v);
