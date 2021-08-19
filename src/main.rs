@@ -7,6 +7,11 @@ fn main() {
     let s = data.to_string();
     println!("{:?}",s);
 
+    let mut s = String::from("foo");
+    s.push_str("bar");
+    println!("{:?}",s);
+
+
 
     let v: Vec<i32> = Vec::new();
     let v = vec![1,2,3];
