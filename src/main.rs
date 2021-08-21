@@ -16,6 +16,28 @@ fn main() {
     s1.push_str(s2);
     println!("s1 is {}",s1);
     println!("s2 is {}",s2);
+    
+    let mut s = String::from("lo");
+    s.push('l');
+    println!("{}",s);
+
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = s1 + "-" + &s2 + "-" + &s3;
+
+    println!("{}",s);
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    let s = format!("{}-{}-{}", s1,s2,s3);
+
+    println!("{}",s);
+
 
     let v: Vec<i32> = Vec::new();
     let v = vec![1,2,3];
