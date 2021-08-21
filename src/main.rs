@@ -11,7 +11,11 @@ fn main() {
     s.push_str("bar");
     println!("{:?}",s);
 
-
+    let mut s1 = String::from("foolish");
+    let s2 = "bar";
+    s1.push_str(s2);
+    println!("s1 is {}",s1);
+    println!("s2 is {}",s2);
 
     let v: Vec<i32> = Vec::new();
     let v = vec![1,2,3];
