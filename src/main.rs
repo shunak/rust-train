@@ -1,7 +1,14 @@
 use std::collections::HashMap;
 
-
 fn main() {
+
+
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"),10);
+    scores.insert(String::from("Yellow"),50);
+    println!("{:?}",scores);
+
     let mut s = String::new();
     let data  = "initial commit";
     let s = data.to_string();
