@@ -1,11 +1,12 @@
 use std::collections::HashMap;
 
 fn main() {
-        
+    // panic!("crash and burn");
     
-    
+    let v = vec![1,2,3];
+    v[99];
 
-    
+
     let mut scores = HashMap::new();
 
     scores.insert(String::from("Blue"),10);
