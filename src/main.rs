@@ -1,22 +1,52 @@
 use std::collections::HashMap;
 use std::fs::File;
+use std::io::ErrorKind;
 
 fn main() {
     // let f: u32 = File::open("hello.txt");
     let f = File::open("hello.txt");
 
+    // let f = match f {
+        // Ok(file) => file,
+    //     Err(error) => {
+    //         panic!("There was a problem opening the file: {:?}", error)
+    //     },
+    // };
     let f = match f {
         Ok(file) => file,
-        Err(error) => {
-            panic!("There was a problem opening the file: {:?}", error)
+        Err(ref error) if error.kind() ==ErrorKind::NotFound => {
+            match File::open("hello.txt"){
+            // match File::create("hello.txt"){
+                Ok(fc) => fc,
+                Err(e) => {
+                    panic!(
+                        "Tried to create file but there was a problem: {:?}", 
+                        e
+                    )
+                }
+            }
         },
+        Err(error)=> {
+            panic!(
+                "There was a problem opening the file: {:?}",
+                error
+            )
+        }
     };
+
+
     
+
+
+
+
+
+
+
 
 
 
     // panic!("crash and burn");
-    
     let v = vec![1,2,3];
     v[99];
 
