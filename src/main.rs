@@ -6,18 +6,25 @@ use std::io::Read;
 
 
 fn main() {
+    // Generic type :Define the argument type dynamically
+    #[derive(Debug)]
+    struct Point<T>{
+        x: T,
+        y: T,
+    }
+
+    let integer = Point{x:5, y:10};
+    let float = Point{x:1.0, y:4.0};
+
+    println!("{:?}",integer);
+    println!("{:?}",float);
     // let f: u32 = File::open("hello.txt");
 
     // let f = File::open("hello.txt").unwrap();
     // let f = File::open("hello.txt").expect("Faild to open hello.txt");
     read_username_from_file();
-        
-    
 
-
-
-
-    let f = File::open("hello.txt");
+    let f = File::create("hello.txt");
 
     // let f = match f {
         // Ok(file) => file,
@@ -50,7 +57,7 @@ fn main() {
 
     // panic!("crash and burn");
     let v = vec![1,2,3];
-    v[99];
+    // v[99];
 
 
     let mut scores = HashMap::new();
