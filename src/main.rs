@@ -4,14 +4,13 @@ use std::io;
 use std::io::ErrorKind;
 use std::io::Read;
 
-
 fn main() {
-    // Generic type :Define the argument type dynamically
+     // Generic type :Define the argument type dynamically
     #[derive(Debug)]
-    struct Point<T>{
-        x: T,
-        y: T,
-    }
+     struct Point<T>{
+         x: T,
+         y: T,
+     }
 
     let integer = Point{x:5, y:10};
     let float = Point{x:1.0, y:4.0};
@@ -19,6 +18,19 @@ fn main() {
     println!("{:?}",integer);
     println!("{:?}",float);
     // let f: u32 = File::open("hello.txt");
+    #[derive(Debug)]
+    struct Point2<T,U> {
+        x: T,
+        y: U,
+    }
+    
+    let both_integer = Point2{x: 5, y: 10};
+    let both_float = Point2{x: 5.0, y: 10.0};
+    let integer_and_float = Point2{x: 5, y: 10.0};
+    
+    println!("{:?}",both_integer);
+    println!("{:?}",both_float);
+    println!("{:?}",integer_and_float);
 
     // let f = File::open("hello.txt").unwrap();
     // let f = File::open("hello.txt").expect("Faild to open hello.txt");
