@@ -12,11 +12,29 @@ fn main() {
          y: T,
      }
 
-    let integer = Point{x:5, y:10};
-    let float = Point{x:1.0, y:4.0};
+    impl<T> Point<T>{
+        fn x(&self) -> &T{
+            &self.x
+        }
+    }
 
-    println!("{:?}",integer);
+    impl Point<f32> {
+        fn distance_from_origin(&self) -> f32 {
+            (self.x.powi(2) + self.y.powi(2)).sqrt()
+        }
+    }
+
+    let p = Point{x:5, y:10};
+    let float = Point{x:1.0, y:4.0};
+    let dst = float.distance_from_origin();
+
+
+    println!("{:?}",p);
     println!("{:?}",float);
+
+    println!("p.x = {}",p.x());
+    println!("{}",dst);
+
     // let f: u32 = File::open("hello.txt");
     #[derive(Debug)]
     struct Point2<T,U> {
