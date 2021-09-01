@@ -41,14 +41,40 @@ fn main() {
         x: T,
         y: U,
     }
-    
     let both_integer = Point2{x: 5, y: 10};
     let both_float = Point2{x: 5.0, y: 10.0};
     let integer_and_float = Point2{x: 5, y: 10.0};
-    
     println!("{:?}",both_integer);
     println!("{:?}",both_float);
     println!("{:?}",integer_and_float);
+
+    #[derive(Debug)]
+    struct Point3<T,U> {
+        x: T,
+        y: U,
+    }
+
+    impl<T,U> Point3<T,U> {
+        fn mixup<V,W>(self, other: Point3<V,W>)->Point3<T,W>{
+            Point3{
+                 x: self.x,
+                 y: other.y,
+              }
+        }
+    }
+    
+    let p1 = Point3{x:5, y:10.4};
+    let p2 = Point3{x:"Hello", y:'c'};
+    let p3 = p1.mixup(p2);
+
+    println!("p3.x = {}, p3.y = {}",p3.x,p3.y);
+
+
+
+
+
+
+
 
     // let f = File::open("hello.txt").unwrap();
     // let f = File::open("hello.txt").expect("Faild to open hello.txt");
