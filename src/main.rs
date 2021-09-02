@@ -3,7 +3,7 @@ use std::fs::File;
 use std::io;
 use std::io::ErrorKind;
 use std::io::Read;
-use rust_train::{Summary, Tweet};
+use rust_train::{Summary, Tweet, NewsArticle};
 
 fn main() {
 
@@ -15,6 +15,17 @@ let tweet = Tweet {
 };
 
 println!("1 new tweet: {}", tweet.summarize());
+
+let headline = NewsArticle {
+    headline: String::from("Number of infection of covid-19"),
+    location: String::from("Tokyo"),
+    author: String::from("Joe"),
+    content: String::from("hoge"),
+};
+
+println!("Next news >> {}", headline.summarize());
+
+
 
      // Generic type :Define the argument type dynamically
     #[derive(Debug)]
