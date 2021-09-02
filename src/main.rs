@@ -3,8 +3,19 @@ use std::fs::File;
 use std::io;
 use std::io::ErrorKind;
 use std::io::Read;
+use rust_train::{Summary, Tweet};
 
 fn main() {
+
+let tweet = Tweet {
+    username: String::from("horse_ebooks"),
+    content: String::from("of course, as you probably already know, people",),
+    reply: false,
+    retweet: false,
+};
+
+println!("1 new tweet: {}", tweet.summarize());
+
      // Generic type :Define the argument type dynamically
     #[derive(Debug)]
      struct Point<T>{
