@@ -1,10 +1,16 @@
+// Trait is like a interface. So to speak, tyoe of methods.
 pub trait Summary {
-    fn summarize(&self)->String{
-        String::from("Read more...")
+    fn summarize_author(&self) -> String;
+
+    fn summarize(&self) -> String {
+        format!("Read more from {}...", self.summarize_author())
     }
+    // fn summarize(&self)->String{
+    //     String::from("Read more...")
+    // }
 }
 
-// Struct is kind of a type definition
+// Struct is kind of a type definition, kind of a Class
 pub struct NewsArticle {
     pub headline: String,
     pub location: String,
@@ -27,10 +33,15 @@ pub struct Tweet {
     pub retweet: bool,
 }
 
+
+// Implement Summary trait for Tweet type, which defines summarize_author method
 impl Summary for Tweet {
-    fn summarize(&self)-> String{
-        format!("{}: {}", self.username, self.content)
+    fn summarize_author(&self)-> String{
+        format!("@{}", self.username)
     }
+    // fn summarize(&self)-> String{
+    //     format!("{}: {}", self.username, self.content)
+    // }
 }
 
 
