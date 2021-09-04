@@ -24,7 +24,12 @@ pub struct NewsArticle {
 //     }
 // }
 
-impl Summary for NewsArticle {}
+// impl Summary for NewsArticle {}
+impl Summary for NewsArticle {
+    fn summarize_author(&self) -> String {
+        format!("@{}", self.headline)
+    }
+}
 
 pub struct Tweet {
     pub username: String,
