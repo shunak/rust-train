@@ -7,24 +7,24 @@ use rust_train::{Summary, Tweet, NewsArticle};
 
 fn main() {
 
-let tweet = Tweet {
-    username: String::from("horse_ebooks"),
-    content: String::from("of course, as you probably already know, people",),
-    reply: false,
-    retweet: false,
-};
-
-println!("1 new tweet: {}", tweet.summarize());
-
-let headline = NewsArticle {
-    headline: String::from("Number of infection of covid-19"),
-    location: String::from("Tokyo"),
-    author: String::from("Joe"),
-    content: String::from("hoge"),
-};
-
-println!("Next news >> {}", headline.summarize());
-
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of course, as you probably already know, people",),
+        reply: false,
+        retweet: false,
+    };
+    
+    println!("1 new tweet: {}", tweet.summarize());
+    
+    let headline = NewsArticle {
+        headline: String::from("Number of infection of covid-19"),
+        location: String::from("Tokyo"),
+        author: String::from("Joe"),
+        content: String::from("hoge"),
+    };
+    
+    println!("Next news >> {}", headline.summarize());
+    
 
 
      // Generic type :Define the argument type dynamically
