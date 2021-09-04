@@ -1,5 +1,7 @@
 pub trait Summary {
-    fn summarize(&self)->String;
+    fn summarize(&self)->String{
+        String::from("Read more...")
+    }
 }
 
 // Struct is kind of a type definition
