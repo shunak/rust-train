@@ -2,6 +2,7 @@ pub trait Summary {
     fn summarize(&self)->String;
 }
 
+// Struct is kind of a type definition
 pub struct NewsArticle {
     pub headline: String,
     pub location: String,
