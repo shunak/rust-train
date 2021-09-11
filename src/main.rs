@@ -4,6 +4,22 @@ use std::io;
 use std::io::ErrorKind;
 use std::io::Read;
 use rust_train::{Summary, Tweet, NewsArticle};
+use std::fmt::Display;
+use std::fmt;
+
+
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+where T: Display
+{
+    // announce
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    }else{
+        y
+    }
+}
+
 
 fn largest<T: PartialOrd + Copy>(list: &[T]) -> T{
     let mut largest = list[0];
@@ -25,6 +41,26 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 }
 
 fn main() {
+    // #[derive(Debug)]
+    //  struct Word<T>{
+    //      x: T,
+    //      y: T,
+    //  }
+
+    // impl fmt::Display for Word<T> {
+    //     fn fmt(&self, f: &mut fmt ::Formatter<'_>) -> fmt::Result {
+    //         write!(f, "({},{})", self.x, self.y)
+    //     }
+    // }
+
+    // let origin = Word{x:"hoge", y:"foo"};
+    
+    // let s1: str = "hoge";
+    // let s2: str = "foo";
+
+    // let result_1 = longest_with_an_announcement(&s1,&s2,origin);
+
+
 
     let s: &'static str = "I have a static lifetime.";
 
