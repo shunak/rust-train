@@ -26,6 +26,10 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 fn main() {
 
+    let s: &'static str = "I have a static lifetime.";
+
+
+
     let string1 = String::from("long string is long");
 
     {
