@@ -4,12 +4,12 @@ use std::io;
 use std::io::ErrorKind;
 use std::io::Read;
 use rust_train::{Summary, Tweet, NewsArticle};
-use std::fmt::Display;
 use std::fmt;
+use std::fmt::Display;
 
 
 fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
-where T: Display
+    where T: Display
 {
     // announce
     println!("Announcement! {}", ann);
@@ -42,24 +42,24 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 fn main() {
     // #[derive(Debug)]
-    //  struct Word<T>{
-    //      x: T,
-    //      y: T,
-    //  }
+     struct Word{
+         x: String,
+         y: String,
+     }
 
-    // impl fmt::Display for Word<T> {
-    //     fn fmt(&self, f: &mut fmt ::Formatter<'_>) -> fmt::Result {
-    //         write!(f, "({},{})", self.x, self.y)
-    //     }
-    // }
+    impl fmt::Display for Word {
+        fn fmt(&self, f: &mut fmt ::Formatter<'_>) -> fmt::Result {
+            write!(f, "({},{})", self.x, self.y)
+        }
+    }
 
-    // let origin = Word{x:"hoge", y:"foo"};
+    let origin = Word{x:String::from("hoge"), y:String::from("foo")};
     
-    // let s1: str = "hoge";
-    // let s2: str = "foo";
+    let s1 = "hoge";
+    let s2 = "foo";
 
-    // let result_1 = longest_with_an_announcement(&s1,&s2,origin);
-
+    let result_1 = longest_with_an_announcement(&s1,&s2,origin);
+    println!("{}", result_1);
 
 
     let s: &'static str = "I have a static lifetime.";
