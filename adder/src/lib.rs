@@ -13,10 +13,20 @@ pub fn add_two(a: i32) -> i32 {
     a + 3
 }
 
+pub fn greeting(name: &str) -> String{
+    format!("Hello {}!", name)
+}
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn greeting_contains_name(){
+        let result = greeting("Carol");
+        assert!(result.contains("Carol"));
+    }
+
 
     #[test]
     fn it_adds_two(){
