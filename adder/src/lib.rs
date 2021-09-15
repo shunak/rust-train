@@ -59,11 +59,6 @@ mod tests {
         assert_eq!(5,value);
     }
 
-
-
-
-
-
     #[test]
     fn it_works() -> Result<(), String>{
         if add_two(2) == 4 {
@@ -94,6 +89,7 @@ mod tests {
     
 
     #[test]
+    #[ignore]
     fn exploration() {
         assert_eq!(2 + 2, 4);
     }
