@@ -17,27 +17,54 @@ fn simulated_expensive_calculation(intensity: u32) -> u32{
     intensity
 }
 
-fn generate_workout(intensity: u23, random_number: u32){
+
+fn generate_workout(intensity: u32, random_number:u32){
+    let expensive_closure = |num| {
+        println!("calculating slowly...");
+        thread::sleep(Duration::from_secs(2));
+        num;
+    };
     if intensity < 25 {
         println!(
             "Today, do {} pushups!",
-            simulated_expensive_calculation(intensity)
+            expensive_closure(intensity)
+        );
+        println!("Next do situps!",
+            expensive_closure(intensity)
             );
-        println!(
-            "Next do {} situps!",
-            simulated_expensive_calculation(intensity)
-            );
-    } else {
-        if random_number == 3 {
-            println!("Take a break today! Remember to stay hydrated!");
-        } else {
+    }else{
+        if random_number == 3{
+            println!("Take a break"); 
+        }else{
             println!(
-                "Today, run for {} minutes!",
-                simulated_expensive_calculation(intensity)
-                );
+            "Today, run for {} minutes!",
+            expensive_closure(intensity)
+            );
         }
     }
 }
+
+// fn generate_workout(intensity: u23, random_number: u32){
+//     if intensity < 25 {
+//         println!(
+//             "Today, do {} pushups!",
+//             simulated_expensive_calculation(intensity)
+//             );
+//         println!(
+//             "Next do {} situps!",
+//             simulated_expensive_calculation(intensity)
+//             );
+//     } else {
+//         if random_number == 3 {
+//             println!("Take a break today! Remember to stay hydrated!");
+//         } else {
+//             println!(
+//                 "Today, run for {} minutes!",
+//                 simulated_expensive_calculation(intensity)
+//                 );
+//         }
+//     }
+// }
 
 
 
