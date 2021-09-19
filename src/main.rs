@@ -17,6 +17,12 @@ fn simulated_expensive_calculation(intensity: u32) -> u32{
     intensity
 }
 
+fn generate_workout(intensity: u23, random_number: u32){
+
+}
+
+
+
 fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
     where T: Display
 {
