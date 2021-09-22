@@ -134,15 +134,25 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 }
 
 fn main() {
-    let x = vec![1,2,3];
+    
+    let v1 = vec![1,2,3];
+    let v1_iter = v1.iter();
+    for val in v1_iter {
+        println!("Got: {}",val);
+    }
 
-    let equal_to_x = move |z| z == x;
 
-    println!("can't use x here: {:?}",x);
 
-    let y = vec![1,2,3];
+    // let x = vec![1,2,3];
 
-    assert!(equal_to_x(y));
+
+    // let equal_to_x = move |z| z == x;
+
+    // println!("can't use x here: {:?}",x);
+
+    // let y = vec![1,2,3];
+
+    // assert!(equal_to_x(y));
 
 
     let simulated_user_specified_value = 10;
