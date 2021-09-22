@@ -137,7 +137,7 @@ fn filters_by_size() {
         Shoe {size: 13, style: String::from("sandal")},
         Shoe {size: 10, style:String::from("boot")},
     ];
-    let in_my_size = shoes_in_my_size(shoes, 10);
+    let in_my_size = shoes_in_my_size(shoes, 13);
     
     assert_eq!(
         in_my_size,
