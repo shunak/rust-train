@@ -140,7 +140,13 @@ fn main() {
     for val in v1_iter {
         println!("Got: {}",val);
     }
+    
+    let args: Vec<String> = env::args().collect();
 
+    let config = Config::new(&args).unwrap_or_else(|err|{
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
 
 
     // let x = vec![1,2,3];
@@ -682,6 +688,7 @@ fn read_username_from_file() -> Result<String, io::Error>{
         Err(e) => Err(e),
     }
 }
+
 
 
 
