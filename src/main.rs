@@ -8,7 +8,8 @@ use std::fmt;
 use std::fmt::Display;
 use std::thread;
 use std::time::Duration;
-
+use std::env;
+use std::process;
 
 fn simulated_expensive_calculation(intensity: u32) -> u32{
     // calculate slowly
@@ -143,10 +144,10 @@ fn main() {
     
     let args: Vec<String> = env::args().collect();
 
-    let config = Config::new(&args).unwrap_or_else(|err|{
-        eprintln!("Problem parsing arguments: {}", err);
-        process::exit(1);
-    });
+    // let config = Config::new(&args).unwrap_or_else(|err|{
+    //     eprintln!("Problem parsing arguments: {}", err);
+    //     process::exit(1);
+    // });
 
 
     // let x = vec![1,2,3];
