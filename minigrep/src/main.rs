@@ -13,12 +13,12 @@ fn main() {
     let config = parse_config(&args);
 
 
-    println!("Searching for {}",query);
+    println!("Searching for {}",config.query);
 
-    println!("In file {}", filename);
+    println!("In file {}", config.filename);
 
 
-    let mut f = File::open(filename).expect("file not found");
+    let mut f = File::open(config.filename).expect("file not found");
 
     let mut contents = String::new();
 
