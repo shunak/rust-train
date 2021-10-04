@@ -40,3 +40,7 @@ impl Config {
     }
 }
 
+#[cfg(test)]
+mod test {
+
+}
