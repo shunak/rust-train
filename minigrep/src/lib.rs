@@ -47,9 +47,9 @@ mod test {
     fn one_result(){
         let query = "duct";
         let contents = "\
-        Rust:
-        safe, fast, productive.
-        pick three.";
+Rust:
+safe, fast, productive.
+pick three.";
 
 
         assert_eq!(
@@ -61,6 +61,15 @@ mod test {
 
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str>{
-    vec![]
+    let mut results = Vec::new();
+
+    for line in contents.lines(){
+        if line.contains(query){
+            //do something with line
+            results.push(line);
+        }
+    }
+
+    results
 }
 
