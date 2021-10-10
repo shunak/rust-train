@@ -53,7 +53,8 @@ mod test {
         let contents = "\
 Rust:
 safe, fast, productive.
-pick three.";
+pick three.
+Duct tape.";
 
 
         assert_eq!(
