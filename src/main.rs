@@ -144,6 +144,9 @@ fn main() {
     
     let args: Vec<String> = env::args().collect();
 
+    let v1: Vec<i32> = vec![1,2,3];
+    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+    assert_eq!(v2, vec![2,3,4]);
     // let config = Config::new(&args).unwrap_or_else(|err|{
     //     eprintln!("Problem parsing arguments: {}", err);
     //     process::exit(1);

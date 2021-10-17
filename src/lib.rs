@@ -194,6 +194,15 @@ fn using_other_iterator_trait_methods(){
     assert_eq!(18, sum);
 }
 
+#[test]
+fn test_map_iter(){
+let v1: Vec<i32> = vec![1, 2, 3];
+
+let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+
+assert_eq!(v2, vec![2, 3, 4]);
+
+}
 
 
 
