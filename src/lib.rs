@@ -206,31 +206,31 @@ assert_eq!(v2, vec![2, 3, 4]);
 
 
 
-// impl Config {
+impl Config {
 
-//     pub fn new(mut args: std::env::Args) -> Result<Config, &'static str>{
-//         args.next();
+    pub fn new(mut args: std::env::Args) -> Result<Config, &'static str>{
+        args.next();
 
-//         let query = match args.next() {
-//             Some(arg) => arg,
-//             None => return Err("Didn't get a query string"),
-//         };
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn't get a query string"),
+        };
 
-//         let filename = match args.next() {
-//             Some(arg) => args,
-//             None => return Err("Didn't get a file name"),
-//         };
-//         // if args.len() < 3 {
-//         //     return Err("not enough arguments");
-//         // }
+        let filename = match args.next() {
+            Some(arg) => args,
+            None => return Err("Didn't get a file name"),
+        };
+        // if args.len() < 3 {
+        //     return Err("not enough arguments");
+        // }
 
-//         // let query = args[1].clone();
-//         // let filename = args[2].clone();
-//         let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
+        // let query = args[1].clone();
+        // let filename = args[2].clone();
+        let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
 
-//         Ok(Config{query, filename, case_sensitive})
-//     }
-// }
+        Ok(Config{query, filename, case_sensitive})
+    }
+}
 
 
 // pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
@@ -244,11 +244,11 @@ assert_eq!(v2, vec![2, 3, 4]);
 // }
 
 
-pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    contents.lines()
-        .filter(|line| line.contains(query))
-        .collect()
-}
+// pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+//     contents.lines()
+//         .filter(|line| line.contains(query))
+//         .collect()
+// }
 
 
 
