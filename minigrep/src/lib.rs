@@ -47,16 +47,16 @@ impl Config {
 
         let query = match args.next(){
             Some(arg) => arg,
-            None => retur Err("Didn't get a qurey string"),
+            None => return Err("Didn't get a qurey string"),
         };
 
         let filename = match args.next() {
             Some(arg) => arg,
             None => return Err("Didn't get a file name"),
         };
-        if args.len() < 3 {
-            return Err("Not enouogh arguments");
-        }
+        // if args.len() < 3 {
+        //     return Err("Not enouogh arguments");
+        // }
         // let query = args[1].clone();
         // let filename = args[2].clone();
 
