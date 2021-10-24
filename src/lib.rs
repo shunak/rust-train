@@ -2,6 +2,7 @@ use std::fmt::Display;
 use std::env;
 
 
+
 // Trait is like a interface. So to speak, tyoe of methods.
 pub trait Summary {
     fn summarize_author(&self) -> String;
