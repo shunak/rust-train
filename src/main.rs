@@ -135,6 +135,9 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 }
 
 fn main() {
+    let b = Box::new(5);
+    println!("b={}",b);
+
     
     let v1 = vec![1,2,3];
     let v1_iter = v1.iter();
