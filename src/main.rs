@@ -138,6 +138,10 @@ fn main() {
     let b = Box::new(5);
     println!("b={}",b);
 
+    enum List {
+        Cons(i32, List),
+        Nil,
+    }
     
     let v1 = vec![1,2,3];
     let v1_iter = v1.iter();
