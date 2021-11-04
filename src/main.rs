@@ -142,7 +142,10 @@ fn main() {
         Cons(i32, List),
         Nil,
     }
-    
+
+    let list = Cons(1,Cons(2,Cons(3,Nil)));
+
+
     let v1 = vec![1,2,3];
     let v1_iter = v1.iter();
     for val in v1_iter {
