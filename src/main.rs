@@ -133,17 +133,24 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
         y
     }
 }
+    #[derive(Debug)]
+    enum List {
+        Cons(i32, Box<List>),
+        Nil,
+    }
+
+    use List::{Cons, Nil};
 
 fn main() {
     let b = Box::new(5);
     println!("b={}",b);
 
-    enum List {
-        Cons(i32, List),
-        Nil,
-    }
+    let list = Cons(1,
+            Box::new(Cons(2,
+                Box::new(Cons(3,
+                        Box::new(Nil))))));
+    println!("{:?}", list);
 
-    let list = Cons(1,Cons(2,Cons(3,Nil)));
 
 
     let v1 = vec![1,2,3];
