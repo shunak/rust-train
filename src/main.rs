@@ -133,6 +133,8 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
         y
     }
 }
+
+
     #[derive(Debug)]
     enum List {
         Cons(i32, Box<List>),
@@ -151,7 +153,38 @@ fn main() {
                         Box::new(Nil))))));
     println!("{:?}", list);
 
+    let xx = 5;
+    let yy = &xx;
+    assert_eq!(5,xx);
+    assert_eq!(5,*yy);
+    
+    //Use Box<T> like a Reference
+    let x1 = 6;
+    let y1 = Box::new(x1);
+    assert_eq!(6,x1);
+    assert_eq!(6,*y1);
 
+    struct MyBox<T>(T);
+    impl<T> MyBox<T> {
+        fn new(x: T) -> MyBox<T> {
+            MyBox(x)
+        }
+    }
+
+    use std::ops::Deref;
+
+    impl<T> Deref for MyBox<T>{
+        type Target = T;
+        fn deref(&self) -> &T {
+            &self.0
+        }
+    }
+
+    let x3 = 7;
+    let y3 = MyBox::new(x3);
+
+    assert_eq!(7,x3);
+    assert_eq!(7,*y3);
 
     let v1 = vec![1,2,3];
     let v1_iter = v1.iter();
