@@ -186,6 +186,17 @@ fn main() {
     assert_eq!(7,x3);
     assert_eq!(7,*y3);
 
+
+    fn hello(name: &str) {
+        println!("Hello {}",name);
+    }
+
+    let m = MyBox::new(String::from("Rust"));
+    hello(&m);
+
+
+
+
     let v1 = vec![1,2,3];
     let v1_iter = v1.iter();
     for val in v1_iter {
