@@ -191,7 +191,7 @@ fn main() {
         println!("Hello {}",name);
     }
 
-    let m = MyBox::new(String::from("Rust"));
+    let m = MyBox::new(String::from("Rust!!!"));
     hello(&m);
 
 
