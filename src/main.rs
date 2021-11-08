@@ -143,7 +143,22 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
     use List::{Cons, Nil};
 
+    struct CustomSmartPointer {
+        data: String,
+    }
+    impl Drop for CustomSmartPointer {
+        fn drop(&mut self){
+            println!("Dropping CustomSmartPointer with data`{}`!",self.data);
+        }
+    }
 fn main() {
+    
+    let c = CustomSmartPointer{data: String::from("my stuff")};
+    let d = CustomSmartPointer{data: String::from("other stuff")};
+    println!("CustomSmartPointers created.");
+
+
+
     let b = Box::new(5);
     println!("b={}",b);
 
@@ -195,7 +210,7 @@ fn main() {
     hello(&m);
 
 
-
+    
 
     let v1 = vec![1,2,3];
     let v1_iter = v1.iter();
