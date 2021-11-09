@@ -151,11 +151,18 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
             println!("Dropping CustomSmartPointer with data`{}`!",self.data);
         }
     }
+
+std::mem::drop
 fn main() {
     
-    let c = CustomSmartPointer{data: String::from("my stuff")};
-    let d = CustomSmartPointer{data: String::from("other stuff")};
-    println!("CustomSmartPointers created.");
+    // let c = CustomSmartPointer{data: String::from("my stuff")};
+    // let d = CustomSmartPointer{data: String::from("other stuff")};
+    // println!("CustomSmartPointers created.");
+    
+    let c = CustomSmartPointer{ data: String::from("some data")};
+    println!("CustomSmartPointer created.");
+    drop(c)
+    println!("CustomSmartPointer dropped before the end of main.");
 
 
 
