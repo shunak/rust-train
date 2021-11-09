@@ -10,6 +10,7 @@ use std::thread;
 use std::time::Duration;
 use std::env;
 use std::process;
+use std::mem::drop;
 
 fn simulated_expensive_calculation(intensity: u32) -> u32{
     // calculate slowly
@@ -152,7 +153,6 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
         }
     }
 
-std::mem::drop
 fn main() {
     
     // let c = CustomSmartPointer{data: String::from("my stuff")};
@@ -161,7 +161,7 @@ fn main() {
     
     let c = CustomSmartPointer{ data: String::from("some data")};
     println!("CustomSmartPointer created.");
-    drop(c)
+    drop(c);
     println!("CustomSmartPointer dropped before the end of main.");
 
 
