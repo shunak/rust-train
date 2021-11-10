@@ -11,6 +11,9 @@ use std::time::Duration;
 use std::env;
 use std::process;
 use std::mem::drop;
+use List::{Cons, Nil};
+use std::rc::Rc;
+
 
 fn simulated_expensive_calculation(intensity: u32) -> u32{
     // calculate slowly
@@ -138,11 +141,11 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
     #[derive(Debug)]
     enum List {
-        Cons(i32, Box<List>),
+        Cons(i32, Rc<List>),
         Nil,
     }
 
-    use List::{Cons, Nil};
+    // use List::{Cons, Nil};
 
     struct CustomSmartPointer {
         data: String,
@@ -159,6 +162,12 @@ fn main() {
     // let d = CustomSmartPointer{data: String::from("other stuff")};
     // println!("CustomSmartPointers created.");
     
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&a));
+    let c = Cons(4, Rc::clone(&a));
+    println!("{:?}",c);
+
+    
     let c = CustomSmartPointer{ data: String::from("some data")};
     println!("CustomSmartPointer created.");
     drop(c);
@@ -166,14 +175,14 @@ fn main() {
 
 
 
-    let b = Box::new(5);
-    println!("b={}",b);
+    // let b = Box::new(5);
+    // println!("b={}",b);
 
-    let list = Cons(1,
-            Box::new(Cons(2,
-                Box::new(Cons(3,
-                        Box::new(Nil))))));
-    println!("{:?}", list);
+    // let list = Cons(1,
+    //         Box::new(Cons(2,
+    //             Box::new(Cons(3,
+    //                     Box::new(Nil))))));
+    // println!("{:?}", list);
 
     let xx = 5;
     let yy = &xx;
