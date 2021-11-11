@@ -160,7 +160,12 @@ fn main() {
     // let c = CustomSmartPointer{data: String::from("my stuff")};
     // let d = CustomSmartPointer{data: String::from("other stuff")};
     // println!("CustomSmartPointers created.");
-    
+    let x = 5;
+    let y = &mut x;
+
+
+
+
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
     println!("count after creating a = {}", Rc::strong_count(&a));
     let b = Cons(3, Rc::clone(&a));
