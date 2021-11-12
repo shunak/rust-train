@@ -3,6 +3,18 @@ use std::env;
 
 
 
+
+pub trait Messenger {
+    fn send(&self, msg: &str);
+}
+
+
+
+
+
+
+
+
 // Trait is like a interface. So to speak, tyoe of methods.
 pub trait Summary {
     fn summarize_author(&self) -> String;
