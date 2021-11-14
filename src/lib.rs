@@ -243,3 +243,28 @@ assert_eq!(v2, vec![2, 3, 4]);
 }
 
 
+#[cfg(tet)]
+mod tests {
+    use super::*;
+
+    struct MocMessenger{
+        sent_messages: Vec<String>,
+    }
+
+    impl MockMessenger{
+        fn new() -> MockMessenger {
+            MockMessenger { sent_messages: vec![]}
+        }
+    }
+
+    impl Messenger for MockMessenger {
+        fn send(&self, message: &str){
+            self.sent_messages.push()String::from(message);
+        }
+    }
+
+
+}
+
+
+
