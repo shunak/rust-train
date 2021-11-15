@@ -246,7 +246,7 @@ assert_eq!(v2, vec![2, 3, 4]);
 #[cfg(tet)]
 mod tests {
     use super::*;
-    use std::cell:RefCell;
+    // use std::cell:RefCell;
 
     struct MocMessenger{
         sent_messages: Vec<String>,
