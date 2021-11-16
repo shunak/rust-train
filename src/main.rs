@@ -181,7 +181,6 @@ fn main() {
     // let c = Cons(4, Rc::clone(&a));
     // println!("{:?}",c);
 
-    
     let c = CustomSmartPointer{ data: String::from("some data")};
     println!("CustomSmartPointer created.");
     drop(c);
