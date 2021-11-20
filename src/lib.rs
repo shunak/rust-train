@@ -246,7 +246,7 @@ assert_eq!(v2, vec![2, 3, 4]);
 #[cfg(tet)]
 mod tests {
     use super::*;
-    use std::cell:RefCell;
+    use std::cell::RefCell;
 
     struct MocMessenger{
         sent_messages: efCell<Vec<String>>,
@@ -278,4 +278,14 @@ mod tests {
 }
 
 
+impl Messenger for MockMessenger {
+    fn send(&self, message: &str){
+        let mut one_borrow = self.sent_messages.borrow_mut();
+        let mut two_borrow = self.sent_messages.borrow_mut();
+
+        one_borrow.push(String::from(message));
+        two_borrow.push(String::from(message));
+    }
+
+}
 
