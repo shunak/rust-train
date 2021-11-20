@@ -243,13 +243,13 @@ assert_eq!(v2, vec![2, 3, 4]);
 }
 
 
-#[cfg(tet)]
+#[cfg(test)]
 mod tests {
     use super::*;
     use std::cell::RefCell;
 
-    struct MocMessenger{
-        sent_messages: efCell<Vec<String>>,
+    struct MockMessenger{
+        sent_messages: RefCell<Vec<String>>,
     }
 
     impl MockMessenger{
