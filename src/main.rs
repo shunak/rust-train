@@ -143,7 +143,6 @@ enum List{
     Cons(Rc<RefCell<i32>>, Rc<List>),
     Nil,
 }
-
     // #[derive(Debug)]
     // enum List {
     //     Cons(i32, Rc<List>),
