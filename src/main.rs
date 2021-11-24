@@ -139,10 +139,24 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 }
 
 #[derive(Debug)]
-enum List{
-    Cons(Rc<RefCell<i32>>, Rc<List>),
+enum List {
+    Cons(i32, RefCell<Rc<List>>),
     Nil,
 }
+
+impl List {
+    fn tail(&self) -> Option<&RefCell<Rc<List>>>{
+        match *self {
+            Cons(_, ref item) => Some(item),
+            Nil => None,
+        }
+    }
+}
+
+// enum List{
+//     Cons(Rc<RefCell<i32>>, Rc<List>),
+//     Nil,
+// }
     // #[derive(Debug)]
     // enum List {
     //     Cons(i32, Rc<List>),
