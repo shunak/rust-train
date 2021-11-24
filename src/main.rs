@@ -175,24 +175,32 @@ impl List {
     }
 
 fn main() {
+
+    let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
+
+    println!("a initial rc count = {}", Rc::strong_count(&a));
+
+
+
+
     // let c = CustomSmartPointer{data: String::from("my stuff")};
     // let d = CustomSmartPointer{data: String::from("other stuff")};
     // println!("CustomSmartPointers created.");
     // let x = 5;
     // let y = &mut x;
 
-    let value = Rc::new(RefCell::new(5));
+    // let value = Rc::new(RefCell::new(5));
 
-    let a = Rc::new(Cons(Rc::clone(&value), Rc::new(Nil)));
+    // let a = Rc::new(Cons(Rc::clone(&value), Rc::new(Nil)));
 
-    let b = Cons(Rc::new(RefCell::new(6)), Rc::clone(&a));
-    let c = Cons(Rc::new(RefCell::new(10)), Rc::clone(&a));
+    // let b = Cons(Rc::new(RefCell::new(6)), Rc::clone(&a));
+    // let c = Cons(Rc::new(RefCell::new(10)), Rc::clone(&a));
 
-    *value.borrow_mut() += 10;
+    // *value.borrow_mut() += 10;
 
-    println!("a after = {:?}", a);
-    println!("b after = {:?}", b);
-    println!("c after = {:?}", c);
+    // println!("a after = {:?}", a);
+    // println!("b after = {:?}", b);
+    // println!("c after = {:?}", c);
 
 
 
