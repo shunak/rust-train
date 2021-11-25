@@ -180,6 +180,7 @@ fn main() {
 
     println!("a initial rc count = {}", Rc::strong_count(&a));
 
+    println!("a next item = {:?}", a.tail());
 
 
 
