@@ -194,6 +194,7 @@ fn main() {
         *link.borrow_mut() = Rc::clone(&b);
     }
 
+
     println!("b rc count after changing a ={}",Rc::strong_count(&b));
     println!("a rc count after changing a ={}",Rc::strong_count(&a));
     // let c = CustomSmartPointer{data: String::from("my stuff")};
