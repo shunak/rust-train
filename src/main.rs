@@ -182,8 +182,20 @@ fn main() {
 
     println!("a next item = {:?}", a.tail());
 
+    let b = Rc::new(Cons(10,RefCell::new(Rc::clone(&a))));
 
+    println!("a rc count after b creation = {}", Rc::strong_count(&a));
 
+    println!("b initial rc count = {}", Rc::strong_count(&b));
+
+    println!("b next item = {:?}", b.tail());
+    
+    if let Some(link) = a.tail() {
+        *link.borrow_mut() = Rc::clone(&b);
+    }
+
+    println!("b rc count after changing a ={}",Rc::strong_count(&b));
+    println!("a rc count after changing a ={}",Rc::strong_count(&a));
     // let c = CustomSmartPointer{data: String::from("my stuff")};
     // let d = CustomSmartPointer{data: String::from("other stuff")};
     // println!("CustomSmartPointers created.");
