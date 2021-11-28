@@ -15,6 +15,16 @@ use List::{Cons, Nil};
 use std::rc::Rc;
 use std::cell::RefCell;
 
+
+#[derive(Debug)]
+struct Node {
+    value: i32,
+    children: RefCell<Vec<Rc<Node>>>.
+}
+
+
+
+
 fn simulated_expensive_calculation(intensity: u32) -> u32{
     // calculate slowly
     println!("calculating slowly...");
