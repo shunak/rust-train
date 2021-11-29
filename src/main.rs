@@ -12,13 +12,14 @@ use std::env;
 use std::process;
 use std::mem::drop;
 use List::{Cons, Nil};
-use std::rc::Rc;
+use std::rc::{Rc,Weak};
 use std::cell::RefCell;
 
 
 #[derive(Debug)]
 struct Node {
     value: i32,
+    parent: RefCell<Weak<Node>>,
     children: RefCell<Vec<Rc<Node>>>.
 }
 
