@@ -216,7 +216,12 @@ fn main() {
     });
 
     // parent of leaf = {:?}
-    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+    // println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+    println!(
+        "laf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf),
+        );
 
     let branch = Rc::new(Node {
         value: 5,
