@@ -248,7 +248,6 @@ fn main() {
     }
     println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
     println!("leaf strong = {}, weak = {}", Rc::strong_count(&leaf),Rc::weak_count(&leaf));
-
     // let c = CustomSmartPointer{data: String::from("my stuff")};
     // let d = CustomSmartPointer{data: String::from("other stuff")};
     // println!("CustomSmartPointers created.");
