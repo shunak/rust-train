@@ -244,7 +244,6 @@ fn main() {
         Rc::weak_count(&leaf),
     );
 
-
     }
     println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
     println!("leaf strong = {}, weak = {}", Rc::strong_count(&leaf),Rc::weak_count(&leaf));
