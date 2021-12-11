@@ -6,14 +6,14 @@ use std::io::Read;
 use rust_train::{Summary, Tweet, NewsArticle};
 use std::fmt;
 use std::fmt::Display;
-use std::thread;
-use std::time::Duration;
 use std::env;
 use std::process;
 use std::mem::drop;
 use List::{Cons, Nil};
 use std::rc::{Rc,Weak};
 use std::cell::RefCell;
+use std::thread;
+use std::time::Duration;
 
 
 #[derive(Debug)]
@@ -186,6 +186,19 @@ impl List {
     }
 
 fn main() {
+
+   thread::spawn(|| {
+        for i in 1..10 {
+            println!("hi number {} from the spawnd thread!",i);
+            thread::sleep(Duration::from_millis(1));
+        }
+   });
+
+   for i in 1..5 {
+        println!("hi number {} from the main thread!", i);
+        thread::sleep(Duration::from_millis(1));
+   }
+
 
     let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
 
