@@ -15,7 +15,6 @@ use std::cell::RefCell;
 use std::thread;
 use std::time::Duration;
 
-
 #[derive(Debug)]
 struct Node {
     value: i32,
