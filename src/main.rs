@@ -186,6 +186,15 @@ impl List {
 
 fn main() {
 
+    let v = vec![1,2,3];
+
+    let handle = thread::spawn(|| {
+        println!("Here's a vector: {:?}",v);
+    });
+
+
+
+
    let handle = thread::spawn(|| {
         for i in 1..10 {
             println!("hi number {} from the spawnd thread!",i);
