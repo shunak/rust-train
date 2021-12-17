@@ -14,6 +14,7 @@ use std::rc::{Rc,Weak};
 use std::cell::RefCell;
 use std::thread;
 use std::time::Duration;
+use std::sync::mpsc;
 
 #[derive(Debug)]
 struct Node {
@@ -184,7 +185,14 @@ impl List {
         }
     }
 
+
 fn main() {
+
+    let (tx, rx) = mpsc::channel();
+
+
+
+
     let v = vec![1,2,3];
 
     let handle = thread::spawn(move || {
