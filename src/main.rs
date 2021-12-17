@@ -188,20 +188,27 @@ impl List {
 
 fn main() {
 
-    let (tx, rx) = mpsc::channel();
+    let (tx, rx) = mpsc::channel(); // create channel and substitute two parts to varible "tx(=sender)" and "rx(=receiver)"
 
-
-
-
-    let v = vec![1,2,3];
-
-    let handle = thread::spawn(move || {
-        println!("Here's a vector: {:?}",v);
+    thread::spawn(move || {
+        let val = String::from("hi");
+        tx.send(val).unwrap();
     });
 
-    drop(v);
+    let received = rx.recv().unwrap();
+    println!("Got: {}", received);
 
-    handle.join().unwrap();
+
+
+    // let v = vec![1,2,3];
+
+    // let handle = thread::spawn(move || {
+    //     println!("Here's a vector: {:?}",v);
+    // });
+
+    // drop(v);
+
+    // handle.join().unwrap();
 
    let handle = thread::spawn(|| {
         for i in 1..10 {
