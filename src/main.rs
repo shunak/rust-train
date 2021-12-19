@@ -15,6 +15,9 @@ use std::cell::RefCell;
 use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
+use std::sync::Mutex;
+
+
 
 #[derive(Debug)]
 struct Node {
@@ -187,6 +190,18 @@ impl List {
 
 
 fn main() {
+
+    let m = Mutex::new(5);
+
+    
+    {
+        let mut num = m.lock().unwrap();
+        *num = 6;
+    }
+
+    println!("m = {:?}",m);
+
+
 
     let (tx, rx) = mpsc::channel(); // create channel and substitute two parts to varible "tx(=sender)" and "rx(=receiver)"
 
