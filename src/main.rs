@@ -190,10 +190,18 @@ impl List {
 
 
 fn main() {
+    
+    let counter = Mutex::new(0);
+    let mut handles = vec![];
+
+
+
+
+
+
 
     let m = Mutex::new(5);
 
-    
     {
         let mut num = m.lock().unwrap();
         *num = 6;
