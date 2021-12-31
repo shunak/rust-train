@@ -209,9 +209,13 @@ fn main() {
 
     println!("Result: {}", *counter.lock().unwrap());
 
+
+
+
+
+
     // let counter = Mutex::new(0);
     // let mut handles = vec![];
-
 
     // let handle = thread::spawn(move || {
     //     let mut num = counter.lock().unwrap();
