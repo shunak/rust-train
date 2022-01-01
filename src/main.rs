@@ -188,7 +188,6 @@ impl List {
         }
     }
 
-
 fn main() {
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
