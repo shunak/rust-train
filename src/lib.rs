@@ -2,6 +2,11 @@ use std::fmt::Display;
 use std::env;
 
 
+pub struct AveragedCollection {
+    list: Vec<i32>,
+    average: f64,
+}
+
 
 
 pub trait Messenger {
