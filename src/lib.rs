@@ -1,6 +1,10 @@
 use std::fmt::Display;
 use std::env;
 
+pub trait Draw {
+    fn draw(&self);
+}
+
 
 pub struct AveragedCollection {
     list: Vec<i32>,
