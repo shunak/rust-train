@@ -19,15 +19,43 @@ use std::sync::{Mutex, Arc};
 
 
 
+struct ConvertOneStringToAnother_DC<'a> {
+    pub s1: &'a str,
+    pub s2: &'a str,
+}
+impl <'a> ConvertOneStringToAnother_DC<'a> {
+    pub fn findMinOperations(&self, s1: &'a str, s2: &'a str)-> i32 {
+       return self.findMinOperationsAux(s1, s2, 0, 0);
+    }
+    pub fn findMinOperationsAux(&self, s1: &'a str, s2: &'a str, i: usize, j: usize)-> i32 {
+        if i == s1.len() {
+            return s2.len() as i32 - j as i32;
+        }
+        if j == s2.len() {
+            return s1.len() as i32 - i as i32;
+        }
+        if s1.chars().nth(i) == s2.chars().nth(j) {
+            return self.findMinOperationsAux(s1, s2, i+1, j+1);
+        }
+        let mut min = std::i32::MAX;
+        min = std::cmp::min(min, self.findMinOperationsAux(s1, s2, i+1, j));
+        min = std::cmp::min(min, self.findMinOperationsAux(s1, s2, i, j+1));
+        min = std::cmp::min(min, self.findMinOperationsAux(s1, s2, i+1, j+1));
+        return min + 1;
+    }
+}
+
+
+
+
+
+
 #[derive(Debug)]
 struct Node {
     value: i32,
     parent: RefCell<Weak<Node>>,
     children: RefCell<Vec<Rc<Node>>>,
 }
-
-
-
 
 fn simulated_expensive_calculation(intensity: u32) -> u32{
     // calculate slowly
@@ -189,6 +217,8 @@ impl List {
     }
 
 fn main() {
+    let dqst = ConvertOneStringToAnother_DC {s1: "table", s2: "tbres"};
+    println!("{}", dqst.findMinOperations("table", "tbres"));
 
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
