@@ -52,7 +52,7 @@ struct ZeroOneKnapsack_DC<'a> {
 }
 impl <'a> ZeroOneKnapsack_DC<'a> {
     pub fn knapsack(&self, profits: &'a Vec<i32>, weights: &'a Vec<i32>, capacity: i32) -> i32{
-        return self.knapsack_aux(&profits, &weights, capacity, 0);
+        return self.knapsack_aux(profits, weights, capacity, 0);
     }
     pub fn knapsack_aux(&self, profits: &'a Vec<i32>, weights: &'a Vec<i32>, capacity: i32, currentIndex: i32)-> i32{
         if capacity <=0 || currentIndex <0 || currentIndex >= profits.len() as i32 { // Base case
