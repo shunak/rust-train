@@ -45,6 +45,48 @@ impl <'a> ConvertOneStringToAnother_DC<'a> {
     }
 }
 
+struct ZeroOneKnapsack_DC<'a> {
+    pub weights: &'a Vec<i32>,
+    pub profits: &'a Vec<i32>,
+    pub capacity:  i32,
+}
+impl <'a> ZeroOneKnapsack_DC<'a> {
+    pub fn knapsack(&self, profits: &'a Vec<i32>, weights: &'a Vec<i32>, capacity: i32) -> i32{
+        return self.knapsack_aux(&profits, &weights, capacity, 0);
+    }
+    pub fn knapsack_aux(&self, profits: &'a Vec<i32>, weights: &'a Vec<i32>, capacity: i32, currentIndex: i32)-> i32{
+        if capacity <=0 || currentIndex <0 || currentIndex >= profits.len() as i32 { // Base case
+            return 0;
+        };
+
+        let mut profit1 = 0;
+        if weights[currentIndex as usize] <= capacity {
+            profit1 = profits[currentIndex as usize] + self.knapsack_aux(profits, weights, capacity - weights[currentIndex as usize], currentIndex + 1);
+        };
+        let profit2 = self.knapsack_aux(profits, weights, capacity, currentIndex + 1);
+
+        return std::cmp::max(profit1, profit2);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -217,8 +259,17 @@ impl List {
     }
 
 fn main() {
+    let ks = ZeroOneKnapsack_DC {
+        weights: &vec![31,26,72,17],
+        profits: &vec![3,1,5,2],
+        capacity: 7,
+    };
+    println!("{}", ks.knapsack(&ks.weights, &ks.profits, ks.capacity));
+    // println!("{}", ks.knapsack(&vec![38,30,70,15], &vec![3,1,5,2], 7));
+
     let dqst = ConvertOneStringToAnother_DC {s1: "table", s2: "tbres"};
-    println!("{}", dqst.findMinOperations("table", "tbres"));
+    println!("{}", dqst.findMinOperations(&dqst.s1, &dqst.s2));
+    // println!("{}", dqst.findMinOperations("table", "tbres"));
 
     let counter = Arc::new(Mutex::new(0));
     let mut handles = vec![];
