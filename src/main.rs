@@ -60,10 +60,10 @@ impl <'a> ZeroOneKnapsack_DC<'a> {
         };
 
         let mut profit1 = 0;
-        if weights[currentIndex as usize] <= capacity {
+        if weights[currentIndex as usize] <= capacity { // If the current item fits in the knapsack
             profit1 = profits[currentIndex as usize] + self.knapsack_aux(profits, weights, capacity - weights[currentIndex as usize], currentIndex + 1);
         };
-        let profit2 = self.knapsack_aux(profits, weights, capacity, currentIndex + 1);
+        let profit2 = self.knapsack_aux(profits, weights, capacity, currentIndex + 1); // If the current item does not fit in the knapsack 
 
         return std::cmp::max(profit1, profit2);
     }
