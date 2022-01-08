@@ -1,6 +1,10 @@
 use std::fmt::Display;
 use std::env;
 
+pub struct Button {
+
+
+}
 pub trait Draw {
     fn draw(&self);
 }
