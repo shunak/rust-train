@@ -16,8 +16,19 @@ use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
+extern crate gui;
+use gui::Draw;
 
+struct SelectBox {
+    width: u32,
+    height: u32,
+    options: Vec<String>,
+}
+impl Draw for SelectBox {
+    fn draw(&self){
 
+    }
+}
 
 struct ConvertOneStringToAnother_DC<'a> {
     pub s1: &'a str,
