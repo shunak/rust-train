@@ -18,6 +18,7 @@ use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
 extern crate gui;
 use gui::Draw;
+use gui::Screen;
 
 struct SelectBox {
     width: u32,
@@ -270,6 +271,14 @@ impl List {
     }
 
 fn main() {
+    let screen = Screen {
+        components: vec![
+          Box::new(String::from("Hi")),  
+        ],
+    };
+
+    screen.run();
+
     let ks = ZeroOneKnapsack_DC {
         weights: &vec![31,26,72,17],
         profits: &vec![3,1,5,2],
