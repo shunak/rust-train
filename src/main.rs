@@ -20,6 +20,8 @@ use gui::{Screen, Button};
 use gui::Draw;
 use gui::Screen;
 extern crate gui;
+extern crate blog;
+use blog::Post;
 
 
 struct SelectBox {
@@ -273,6 +275,18 @@ impl List {
     }
 
 fn main() {
+    let mut post  = Post::new();
+
+    post.add_text("I ate a salad for lunch today");
+    assert_eq!("", post.content());
+
+    post.request_review();
+    assert_eq!("",post.content());
+
+    post.approve();
+    assert_eq!("T ate a salad for lunch today", post.content());
+
+
     let screen = Screen {
         components: vec![
             Box::new(SelectBox{
