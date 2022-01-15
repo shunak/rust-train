@@ -324,7 +324,6 @@ fn main() {
     };
     println!("{}", ks.knapsack(&ks.weights, &ks.profits, ks.capacity));
     // println!("{}", ks.knapsack(&vec![38,30,70,15], &vec![3,1,5,2], 7));
-
     let dqst = ConvertOneStringToAnother_DC {s1: "table", s2: "tbres"};
     println!("{}", dqst.findMinOperations(&dqst.s1, &dqst.s2));
     // println!("{}", dqst.findMinOperations("table", "tbres"));
