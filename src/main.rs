@@ -42,7 +42,6 @@ impl LongestCommonSubsequenceDC {
     pub fn findLCSLength(&self, s1: &str, s2: &str) -> usize {
         return self.findLCSLengthAux(s1, s2, 0, 0);
          }   
-
         fn findLCSLengthAux(&self, s1: &str, s2: &str, i: usize, j: usize) -> usize {
             if i == s1.len() || j == s2.len() { // Base Case
                 return 0;
