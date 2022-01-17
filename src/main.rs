@@ -18,6 +18,34 @@ use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
 
 
+struct LongestCommonSubsequenceDC {
+    pub s1: String,
+    pub s2: String,
+}
+impl LongestCommonSubsequenceDC {
+    pub fn findLCSLength(&self, s1: &str, s2: &str) -> usize {
+        return self.findLCSLengthAux(s1, s2, 0, 0);
+         }   
+
+        fn findLCSLengthAux(&self, s1: &str, s2: &str, i: usize, j: usize) -> usize {
+            if i == s1.len() || j == s2.len() {
+                return 0;
+            }
+           let mut l3: usize = 0;
+            if s1.chars().nth(i) == s2.chars().nth(j) {
+                l3 = 1 + self.findLCSLengthAux(s1, s2, i + 1, j + 1);
+            }
+            let l1 = self.findLCSLengthAux(s1, s2, i + 1, j);
+            let l2 = self.findLCSLengthAux(s1, s2, i, j + 1);
+
+            return std::cmp::max(l3, std::cmp::max(l1, l2));
+        }
+
+}
+
+
+
+
 
 struct ConvertOneStringToAnother_DC<'a> {
     pub s1: &'a str,
@@ -259,6 +287,17 @@ impl List {
     }
 
 fn main() {
+
+    let lcs: LongestCommonSubsequenceDC = LongestCommonSubsequenceDC {
+        s1: String::from("houdini"),
+        s2: String::from("hdupti"),
+    };
+
+    println!("{}", lcs.findLCSLength(&lcs.s1, &lcs.s2));
+
+
+
+
     let ks = ZeroOneKnapsack_DC {
         weights: &vec![31,26,72,17],
         profits: &vec![3,1,5,2],
