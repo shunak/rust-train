@@ -16,7 +16,23 @@ use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
+use gui::{Screen, Button};
+use gui::Draw;
+use gui::Screen;
+extern crate gui;
+extern crate blog;
+use blog::Post;
 
+
+struct SelectBox {
+    width: u32,
+    height: u32,
+    options: Vec<String>,
+}
+impl Draw for SelectBox {
+    fn draw(&self){
+
+<<<<<<< HEAD
 
 struct LongestCommonSubsequenceDC {
     pub s1: String,
@@ -46,6 +62,10 @@ impl LongestCommonSubsequenceDC {
 
 
 
+=======
+    }
+}
+>>>>>>> 5620309beaf52694c5ff34f3c3c00837e20a2f34
 
 struct ConvertOneStringToAnother_DC<'a> {
     pub s1: &'a str,
@@ -305,7 +325,6 @@ fn main() {
     };
     println!("{}", ks.knapsack(&ks.weights, &ks.profits, ks.capacity));
     // println!("{}", ks.knapsack(&vec![38,30,70,15], &vec![3,1,5,2], 7));
-
     let dqst = ConvertOneStringToAnother_DC {s1: "table", s2: "tbres"};
     println!("{}", dqst.findMinOperations(&dqst.s1, &dqst.s2));
     // println!("{}", dqst.findMinOperations("table", "tbres"));

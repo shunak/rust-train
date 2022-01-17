@@ -1,6 +1,39 @@
 use std::fmt::Display;
 use std::env;
 
+
+pub struct Post {
+    state: Option<Box<State>>,
+    content: String,
+}
+impl Post {
+    pub fn new() -> Post {
+        Post {
+            state: Some(Box::new(Draft{})),
+            content: String::new(),
+        }
+
+    }
+}
+trait State {}
+
+struct Draft {}
+
+impl State for Draft {}
+
+
+
+
+pub struct Button {
+    pub width: u32,
+    pub height: u32,
+    pub label: String,
+}
+impl Draw for Button {
+    fn draw(&self){
+
+    }
+}
 pub trait Draw {
     fn draw(&self);
 }
