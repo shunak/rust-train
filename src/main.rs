@@ -16,23 +16,23 @@ use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
-use gui::{Screen, Button};
-use gui::Draw;
-use gui::Screen;
-extern crate gui;
-extern crate blog;
-use blog::Post;
+// use gui::{Screen, Button};
+// use gui::Draw;
+// use gui::Screen;
+// extern crate gui;
+// extern crate blog;
+// use blog::Post;
 
 
-struct SelectBox {
-    width: u32,
-    height: u32,
-    options: Vec<String>,
-}
-impl Draw for SelectBox {
-    fn draw(&self){
-
-<<<<<<< HEAD
+// struct SelectBox {
+//     width: u32,
+//     height: u32,
+//     options: Vec<String>,
+// }
+// impl Draw for SelectBox {
+//     fn draw(&self){
+//     }
+// }
 
 struct LongestCommonSubsequenceDC {
     pub s1: String,
@@ -44,15 +44,15 @@ impl LongestCommonSubsequenceDC {
          }   
 
         fn findLCSLengthAux(&self, s1: &str, s2: &str, i: usize, j: usize) -> usize {
-            if i == s1.len() || j == s2.len() {
+            if i == s1.len() || j == s2.len() { // Base Case
                 return 0;
             }
            let mut l3: usize = 0;
-            if s1.chars().nth(i) == s2.chars().nth(j) {
-                l3 = 1 + self.findLCSLengthAux(s1, s2, i + 1, j + 1);
+            if s1.chars().nth(i) == s2.chars().nth(j) { // If current character in both the string matches, then increment the count and recursively call the function
+                l3 = 1 + self.findLCSLengthAux(s1, s2, i + 1, j + 1); // Increment the count and recursively call the function
             }
-            let l1 = self.findLCSLengthAux(s1, s2, i + 1, j);
-            let l2 = self.findLCSLengthAux(s1, s2, i, j + 1);
+            let l1 = self.findLCSLengthAux(s1, s2, i , j+1); // If current character in s1 is not equal to current character in s2, then recursively call the function with s1 and s2 with current character in s1 
+            let l2 = self.findLCSLengthAux(s1, s2, i+1, j); //   
 
             return std::cmp::max(l3, std::cmp::max(l1, l2));
         }
@@ -62,10 +62,6 @@ impl LongestCommonSubsequenceDC {
 
 
 
-=======
-    }
-}
->>>>>>> 5620309beaf52694c5ff34f3c3c00837e20a2f34
 
 struct ConvertOneStringToAnother_DC<'a> {
     pub s1: &'a str,
@@ -221,7 +217,7 @@ fn generate_workout(intensity: u32, random_number:u32){
 //             simulated_expensive_calculation(intensity)
 //             );
 //         println!(
-//             "Next do {} situps!",
+//             "Next do {}: situps!",
 //             simulated_expensive_calculation(intensity)
 //             );
 //     } else {
@@ -1187,7 +1183,6 @@ fn read_username_from_file() -> Result<String, io::Error>{
         Err(e) => Err(e),
     }
 }
-
 
 
 
