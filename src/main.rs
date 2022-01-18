@@ -34,6 +34,36 @@ use std::sync::{Mutex, Arc};
 //     }
 // }
 
+
+
+struct LongestPalindromicSubsequenceDC{
+    st: String,
+}
+impl LongestPalindromicSubsequenceDC{
+    pub fn findLPSLength(&self, st: &str)->usize{
+        return self.LPSAux(st, 0, st.len()-1);
+    }
+    fn LPSAux(&self, st: &str, startIdx: usize, endIdx: usize) -> usize {
+        if startIdx > endIdx {
+            return 0;
+        }
+        if startIdx == endIdx {
+            return 1;
+        }
+        let mut count1 = 0;
+        if st.chars().nth(startIdx) == st.chars().nth(endIdx) {
+            count1 = 2 + self.LPSAux(st, startIdx+1, endIdx-1);
+        }
+        let count2 = self.LPSAux(st, startIdx+1, endIdx);
+        let count3 = self.LPSAux(st, startIdx, endIdx-1);
+        return std::cmp::max(count1, std::cmp::max(count2, count3));
+    }
+}
+
+
+
+
+
 struct LongestCommonSubsequenceDC {
     pub s1: String,
     pub s2: String,
@@ -303,11 +333,18 @@ impl List {
 
 fn main() {
 
+    let lps: LongestPalindromicSubsequenceDC = LongestPalindromicSubsequenceDC {
+        st: String::from("elrmenmet"),
+    };
+    println!("Longest Palindromic Sequence is {}", lps.findLPSLength(&lps.st));
+
+
+
+
     let lcs: LongestCommonSubsequenceDC = LongestCommonSubsequenceDC {
         s1: String::from("houdini"),
         s2: String::from("hdupti"),
     };
-
     println!("{}", lcs.findLCSLength(&lcs.s1, &lcs.s2));
 
 
