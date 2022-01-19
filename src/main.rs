@@ -16,24 +16,81 @@ use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
-use gui::{Screen, Button};
-use gui::Draw;
-use gui::Screen;
-extern crate gui;
-extern crate blog;
-use blog::Post;
+// use gui::{Screen, Button};
+// use gui::Draw;
+// use gui::Screen;
+// extern crate gui;
+// extern crate blog;
+// use blog::Post;
 
 
-struct SelectBox {
-    width: u32,
-    height: u32,
-    options: Vec<String>,
+// struct SelectBox {
+//     width: u32,
+//     height: u32,
+//     options: Vec<String>,
+// }
+// impl Draw for SelectBox {
+//     fn draw(&self){
+//     }
+// }
+
+
+
+struct LongestPalindromicSubsequenceDC{
+    st: String,
 }
-impl Draw for SelectBox {
-    fn draw(&self){
-
+impl LongestPalindromicSubsequenceDC{
+    pub fn findLPSLength(&self, st: &str)->usize{
+        return self.LPSAux(st, 0, st.len()-1);
+    }
+    fn LPSAux(&self, st: &str, startIdx: usize, endIdx: usize) -> usize {
+        if startIdx > endIdx {
+            return 0;
+        }
+        if startIdx == endIdx {
+            return 1;
+        }
+        let mut count1 = 0;
+        if st.chars().nth(startIdx) == st.chars().nth(endIdx) {
+            count1 = 2 + self.LPSAux(st, startIdx+1, endIdx-1);
+        }
+        let count2 = self.LPSAux(st, startIdx+1, endIdx);
+        let count3 = self.LPSAux(st, startIdx, endIdx-1);
+        return std::cmp::max(count1, std::cmp::max(count2, count3));
     }
 }
+
+
+
+
+
+struct LongestCommonSubsequenceDC {
+    pub s1: String,
+    pub s2: String,
+}
+impl LongestCommonSubsequenceDC {
+    pub fn findLCSLength(&self, s1: &str, s2: &str) -> usize {
+        return self.findLCSLengthAux(s1, s2, 0, 0);
+         }   
+        fn findLCSLengthAux(&self, s1: &str, s2: &str, i: usize, j: usize) -> usize {
+            if i == s1.len() || j == s2.len() { // Base Case
+                return 0;
+            }
+           let mut l3: usize = 0;
+            if s1.chars().nth(i) == s2.chars().nth(j) { // If current character in both the string matches, then increment the count and recursively call the function
+                l3 = 1 + self.findLCSLengthAux(s1, s2, i + 1, j + 1); // Increment the count and recursively call the function
+            }
+            let l1 = self.findLCSLengthAux(s1, s2, i , j+1); // If current character in s1 is not equal to current character in s2, then recursively call the function with s1 and s2 with current character in s1 
+            let l2 = self.findLCSLengthAux(s1, s2, i+1, j); //   
+
+            return std::cmp::max(l3, std::cmp::max(l1, l2));
+        }
+
+}
+
+
+
+
 
 struct ConvertOneStringToAnother_DC<'a> {
     pub s1: &'a str,
@@ -189,7 +246,7 @@ fn generate_workout(intensity: u32, random_number:u32){
 //             simulated_expensive_calculation(intensity)
 //             );
 //         println!(
-//             "Next do {} situps!",
+//             "Next do {}: situps!",
 //             simulated_expensive_calculation(intensity)
 //             );
 //     } else {
@@ -275,47 +332,23 @@ impl List {
     }
 
 fn main() {
-    let mut post  = Post::new();
 
-    post.add_text("I ate a salad for lunch today");
-    assert_eq!("", post.content());
-
-    post.request_review();
-    assert_eq!("",post.content());
-
-    post.approve();
-    assert_eq!("T ate a salad for lunch today", post.content());
-
-
-    let screen = Screen {
-        components: vec![
-            Box::new(SelectBox{
-                width: 75,
-                height: 10,
-                options: vec![
-                    String::from("Yes"),
-                    String::from("Maybe"),
-                    String::from("No")
-                ],
-            }),
-            Box::new(Button{
-                width: 50,
-                height: 10, label: String::from("OK"),
-            })
-        ],
+    let lps: LongestPalindromicSubsequenceDC = LongestPalindromicSubsequenceDC {
+        st: String::from("elrmenmet"),
     };
-
-    screen.run();
-
+    println!("Longest Palindromic Sequence is {}", lps.findLPSLength(&lps.st));
 
 
-    let screen = Screen {
-        components: vec![
-          Box::new(String::from("Hi")),  
-        ],
+
+
+    let lcs: LongestCommonSubsequenceDC = LongestCommonSubsequenceDC {
+        s1: String::from("houdini"),
+        s2: String::from("hdupti"),
     };
+    println!("{}", lcs.findLCSLength(&lcs.s1, &lcs.s2));
 
-    screen.run();
+
+
 
     let ks = ZeroOneKnapsack_DC {
         weights: &vec![31,26,72,17],
@@ -1186,7 +1219,6 @@ fn read_username_from_file() -> Result<String, io::Error>{
         Err(e) => Err(e),
     }
 }
-
 
 
 
