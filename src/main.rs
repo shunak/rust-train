@@ -34,6 +34,39 @@ use std::sync::{Mutex, Arc};
 //     }
 // }
 
+struct LongestPalindromicSubstringDC{
+    st: String,
+}
+impl LongestPalindromicSubstringDC{
+    pub fn findLPSLength(&self, st: &str)->usize{
+        return self.lps_aux(st, 0, st.len()-1);
+    }
+
+    fn lps_aux(&self, st: &str, startIdx: usize, endIdx: usize)->usize{
+        if startIdx > endIdx {
+            return 0;
+        }
+        if startIdx == endIdx {
+            return 1;
+        } 
+        let mut c1 = 0;
+        if st.chars().nth(startIdx) == st.chars().nth(endIdx){
+            let remainingLength = endIdx - startIdx -1;
+
+            if remainingLength == self.lps_aux(st, startIdx + 1, endIdx -1) {
+                c1 = remainingLength + 2;
+            }
+        }
+        let c2 = self.lps_aux(st, startIdx+1, endIdx);
+        let c3 = self.lps_aux(st, startIdx, endIdx-1);
+        return std::cmp::max(c1, std::cmp::max(c2, c3));
+    }
+
+
+}
+
+
+
 
 
 struct LongestPalindromicSubsequenceDC{
@@ -332,6 +365,13 @@ impl List {
     }
 
 fn main() {
+
+    let lps_s: LongestPalindromicSubstringDC = LongestPalindromicSubstringDC {
+        st: String::from("ABCCBUA"),
+    };
+    println!("Longest Palindromic Substring is {}", lps_s.findLPSLength(&lps_s.st));
+
+
 
     let lps: LongestPalindromicSubsequenceDC = LongestPalindromicSubsequenceDC {
         st: String::from("elrmenmet"),
