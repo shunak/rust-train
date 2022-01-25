@@ -16,13 +16,17 @@ use std::thread;
 use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
+use std::vec;
+// use std::ops;
+// use std::vec;
+// use std::ops::Index<isize>;
+// use std::vec::Vec<std::vec::Vec<i32>>;
 // use gui::{Screen, Button};
 // use gui::Draw;
 // use gui::Screen;
 // extern crate gui;
 // extern crate blog;
 // use blog::Post;
-
 
 // struct SelectBox {
 //     width: u32,
@@ -33,6 +37,28 @@ use std::sync::{Mutex, Arc};
 //     fn draw(&self){
 //     }
 // }
+
+struct MinCostToReachLastCellIn2DArrayDC{
+    cost: [[isize; 5]; 5],
+}
+impl MinCostToReachLastCellIn2DArrayDC{
+    fn findMinCost(&self,cost:[[isize;5];5] ,row: isize, col: isize) -> isize {
+    if row == -1 || col == -1 {
+        return isize::max_value();
+    }      
+    if row == 0 && col == 0 {
+        return self.cost[0][0] as isize;  
+    }
+    let minCost1 = self.findMinCost(cost, row - 1, col);
+    let minCost2 = self.findMinCost(cost, row, col - 1);
+    let minCost =std::cmp::min(minCost1, minCost2);
+    let currentCellsCost = cost[row as usize][col as usize];
+    return minCost + currentCellsCost;
+    }
+}
+
+
+
 
 struct LongestPalindromicSubstringDC{
     st: String,
@@ -365,6 +391,15 @@ impl List {
     }
 
 fn main() {
+    let mctrlc: MinCostToReachLastCellIn2DArrayDC = MinCostToReachLastCellIn2DArrayDC{
+        cost: [[4,7,8,6,4],
+                    [6,7,3,9,2],
+                    [3,8,1,2,4],
+                    [7,1,7,3,7],
+                    [2,9,8,9,3],
+            ],
+    };
+    println!("The minimum cost is {}", mctrlc.findMinCost(mctrlc.cost, mctrlc.cost.len() as isize -1, mctrlc.cost[0].len() as isize -1));
 
     let lps_s: LongestPalindromicSubstringDC = LongestPalindromicSubstringDC {
         st: String::from("ABCCBUA"),
