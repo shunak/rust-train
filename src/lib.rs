@@ -36,7 +36,6 @@ impl State for Draft {
         Box::new(PendingReview{})
     }
 }
-
 struct PendingReview{}
 impl State for PendingReview{
     fn request_review(self: Box<Self>) -> Box<State>{
