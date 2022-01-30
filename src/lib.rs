@@ -17,7 +17,7 @@ impl Post {
         self.content.push_str(text);
     }
     pub fn content(&self) -> &str{
-        ""
+        self.state.as_ref().unwrap().content(&self)
     }
     pub fn request_review(&mut self){
         if let Some(s) = self.state.take(){
@@ -33,6 +33,9 @@ impl Post {
 trait State {
     fn request_review(self: Box<Self>) -> Box<State>;
     fn approve(self: Box<Self>) -> Box<State>;
+    fn content<'a>(&self, post: &'a Post) -> &'a str {
+        ""
+    }
 }
 
 struct Draft {}
@@ -62,6 +65,9 @@ impl State for Published {
     }
     fn approve(self: Box<Self>) -> Box<State> {
         self
+    }
+    fn content<'a>(&self, post: &'a Post)-> &'a str {
+        &post.content
     }
 }
 
