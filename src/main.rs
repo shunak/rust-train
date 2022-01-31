@@ -38,6 +38,32 @@ use std::sync::{Mutex, Arc};
 //     }
 // }
 
+struct NumberOfPathsToReachLastCellDC {
+    array: [[isize; 4]; 4],
+    cost: isize,
+}
+impl NumberOfPathsToReachLastCellDC{
+    pub fn numberOfPaths(&self, array: [[isize;4];4], row: isize, col: isize, cost: isize) -> isize {
+        if cost < 0 {
+            return 0;
+        }
+        if row == 0 && col == 0 {
+            return if array[0][0] - cost == 0 {1} else {0};
+        }
+        if row == 0 {
+            return self.numberOfPaths(array, 0, col-1, cost-array[row as usize][col as usize]);
+        }
+        if col == 0 {
+            return self.numberOfPaths(array, row-1, 0, cost-array[row as usize][col as usize]);
+        }
+        let noOfPathsFromPreviousRow = self.numberOfPaths(array, row-1, col, cost-array[row as usize][col as usize]);
+        let noOfPathsFromPreviousCol = self.numberOfPaths(array, row, col-1, cost-array[row as usize][col as usize]);
+        return noOfPathsFromPreviousRow + noOfPathsFromPreviousCol;
+    }
+}
+
+
+
 struct MinCostToReachLastCellIn2DArrayDC{
     cost: [[isize; 5]; 5],
 }
@@ -394,6 +420,17 @@ impl List {
     }
 
 fn main() {
+    let nop: NumberOfPathsToReachLastCellDC = NumberOfPathsToReachLastCellDC{
+        array: [[4,7,1,6],
+        [5,7,3,9],
+        [3,2,1,2],
+        [7,1,6,3],],
+        cost: 25,
+    };
+    println!("Total paths with cost {} are {}", &nop.cost, nop.numberOfPaths(nop.array, nop.array.len() as isize -1, nop.array[0].len() as isize -1, nop.cost));
+
+
+
     let mctrlc: MinCostToReachLastCellIn2DArrayDC = MinCostToReachLastCellIn2DArrayDC{
         cost: [[4,7,8,6,4],
                     [6,7,3,9,2],
