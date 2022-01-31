@@ -297,7 +297,6 @@ fn generate_workout(intensity: u32, random_number:u32){
         }
     }
 }
-
 // fn generate_workout(intensity: u23, random_number: u32){
 //     if intensity < 25 {
 //         println!(
@@ -368,6 +367,10 @@ impl List {
         }
     }
 }
+
+
+
+
 
 // enum List{
 //     Cons(Rc<RefCell<i32>>, Rc<List>),
