@@ -43,10 +43,10 @@ struct Fbnc{
 impl Fbnc{
     pub fn fibonacciAux(&self, memo: &mut Vec<i32>, n:i32)->i32{
     // pub fn fibonacciAux(&self, memo: &mut [i32;11], n:i32)->i32{
-    if n == 0 {
-        return 0;
-        // panic!("n must be non-negative");
-    }
+    // if n == 0 {
+    //     return 0;
+    //     // panic!("n must be non-negative");
+    // }
     if n == 1 {
         return 0;
     }
@@ -445,7 +445,8 @@ fn main() {
     let fib: Fbnc = Fbnc{
         n: 11,
     };
-    let mut arr =Vec::with_capacity(10);
+    let mut arr =Vec::new();
+    // let mut arr =Vec::with_capacity(10);
     for i in 0..12{
         arr.push(0);
     }
