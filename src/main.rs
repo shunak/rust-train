@@ -51,10 +51,6 @@ impl FbncBottomUp{
         return fbnc_vec[self.n as usize - 1];
     }
 }
-
-
-
-
 struct Fbnc{
     n: i32,
 }
