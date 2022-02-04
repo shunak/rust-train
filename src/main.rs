@@ -37,6 +37,24 @@ use std::vec;
 //     fn draw(&self){
 //     }
 // }
+struct FbncBottomUp{
+    n: i32,
+}
+impl FbncBottomUp{
+    fn fbnc_bottom_up(&self, n:i32) -> i32{
+        let mut fbnc_vec: Vec<i32> = vec![0; self.n as usize];
+        fbnc_vec[0] = 1;
+        fbnc_vec[1] = 1;
+        for i in 2..self.n as usize{
+            fbnc_vec[i] = fbnc_vec[i-1] + fbnc_vec[i-2];
+        }
+        return fbnc_vec[self.n as usize - 1];
+    }
+}
+
+
+
+
 struct Fbnc{
     n: i32,
 }
@@ -442,6 +460,12 @@ impl List {
     }
 
 fn main() {
+    let fibb: FbncBottomUp = FbncBottomUp{
+        n: 10,
+    };
+    println!("Fibonacci by bottom up is also {}", fibb.fbnc_bottom_up(fibb.n));
+
+
     let fib: Fbnc = Fbnc{
         n: 11,
     };
