@@ -473,6 +473,14 @@ fn main() {
     }else {
         println!("Using blue as the background color");
     }
+    let mut stack = Vec::new();
+    stack.push(100);
+    stack.push(200);
+    stack.push(300);
+
+    while let Some(top) = stack.pop() {
+        println!("{}", top);
+    }
 
     let fibb: FbncBottomUp = FbncBottomUp{
         n: 10,
