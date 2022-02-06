@@ -456,6 +456,13 @@ impl List {
     }
 
 fn main() {
+    let v  = vec!['a','b','c'];
+    for (index, value) in v.iter().enumerate(){
+        println!("{} is at index {}", value, index);
+    }
+
+
+
     let favorite_color: Option<&str> = None;
     let is_tuesday = false;
     let age: Result<u8, _> = "24".parse();
