@@ -461,6 +461,9 @@ fn main() {
         println!("{} is at index {}", value, index);
     }
 
+    let (x, y, z) = (1, 2, 3);
+    println!("{},{},{}",x,y,z);
+
 
 
     let favorite_color: Option<&str> = None;
