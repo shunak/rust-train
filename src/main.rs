@@ -514,6 +514,17 @@ fn print_coordinates(&(x,y): &(i32,i32)){
 }
 
 fn main() {
+    let x = 100;
+    match x {
+        1 => println!("one"),
+        2 => println!("two"),
+        3 => println!("three"),
+        _ => println!("anything"),
+    }
+
+
+
+
     let httd = HouseTheif_TopDown{
         worth_to_steal: &mut vec![20,5,1,13,6,11,40],
         // worth_to_steal: &mut vec![6,7,1,30,6,2,4],
