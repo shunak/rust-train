@@ -37,6 +37,30 @@ use std::vec;
 //     }
 // }
 
+struct HouseTheif_TopDown<'a>{
+    worth_to_steal: &'a Vec<i32>,
+}
+impl <'a>HouseTheif_TopDown<'a>{
+    pub fn maxMoney(&self, worth_to_steal: &'a Vec<i32>) -> i32{
+        let dp = &mut vec![0; worth_to_steal.len()];
+        return self.maxMoney_TopDown(dp, worth_to_steal,0);
+    }
+    fn maxMoney_TopDown(&self, dp: &mut Vec<i32>, worth_to_steal: &'a Vec<i32>, index:usize) -> i32{
+        if index >= worth_to_steal.len(){
+            return 0;
+        }
+        if dp[index]==0{
+            let stealCurrent = worth_to_steal[index] + self.maxMoney_TopDown(dp, worth_to_steal, index+2);
+            let skipCurrent = self.maxMoney_TopDown(dp, worth_to_steal, index+1);
+            dp[index] = std::cmp::max(stealCurrent, skipCurrent);
+        }
+        return dp[index];
+    }
+}
+
+
+
+
 struct NumberFactor{
     n: i32,
 }
@@ -490,6 +514,12 @@ fn print_coordinates(&(x,y): &(i32,i32)){
 }
 
 fn main() {
+    let httd = HouseTheif_TopDown{
+        worth_to_steal: &mut vec![20,5,1,13,6,11,40],
+        // worth_to_steal: &mut vec![6,7,1,30,6,2,4],
+    };
+    println!("{:?}", httd.maxMoney(&httd.worth_to_steal));
+
     let nf: NumberFactor = NumberFactor{
         n: 5,
     };
