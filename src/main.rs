@@ -36,6 +36,35 @@ use std::vec;
 //     fn draw(&self){
 //     }
 // }
+
+struct NumberFactor{
+    n: i32,
+}
+impl NumberFactor{
+    pub fn waysToGetN(&self, n: i32) -> i32{
+        let dp = &mut vec![0; n as usize + 1];
+        return self.waysToGetN_TopDown(dp,n);
+    }
+
+    pub fn waysToGetN_TopDown(&self, dp: &mut Vec<i32>, n: i32) -> i32{
+    if n==0||n==1||n==2{
+        return 1;
+    }
+    if n==3{
+        return 2;
+    }
+    if dp[n as usize]==0{
+        let substract1 = self.waysToGetN_TopDown(dp,n-1);
+        let substract3 = self.waysToGetN_TopDown(dp,n-3);
+        let substract4 = self.waysToGetN_TopDown(dp,n-4);
+
+        dp[n as usize] = substract1 + substract3 + substract4;
+    }
+    return dp[n as usize];
+    }
+}
+
+
 struct FbncBottomUp{
     n: i32,
 }
@@ -461,6 +490,13 @@ fn print_coordinates(&(x,y): &(i32,i32)){
 }
 
 fn main() {
+    let nf: NumberFactor = NumberFactor{
+        n: 5,
+    };
+    println!("Number of ways to get N is {}.", nf.waysToGetN(nf.n));
+
+
+
     let point = (3,5);
     print_coordinates(&point);
 
