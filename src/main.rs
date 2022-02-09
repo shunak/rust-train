@@ -514,6 +514,18 @@ fn print_coordinates(&(x,y): &(i32,i32)){
 }
 
 fn main() {
+
+    let x = Some(5);
+    let y = 10;
+
+
+
+
+
+
+
+
+
     let x = 100;
     match x {
         1 => println!("one"),
