@@ -37,6 +37,22 @@ use std::vec;
 //     }
 // }
 
+
+struct HouseThief_BottomUp<'a>{
+    worth_to_steal: &'a Vec<i32>,
+}
+impl <'a>HouseThief_BottomUp<'a>{
+    pub fn findMaxSteal(&self, worth_to_steal: &'a Vec<i32>) -> i32{
+        let dp = &mut vec![0; worth_to_steal.len()+2];// +1 to handle the zero house
+        dp[worth_to_steal.len()] = 0; // If there are no houses, then the thief can't steal anything
+        for i in (0..worth_to_steal.len()).rev() {
+            dp[i] = std::cmp::max(worth_to_steal[i] + dp[i+2], dp[i+1]);
+        }
+        return dp[0];
+    }
+}
+
+
 struct HouseTheif_TopDown<'a>{
     worth_to_steal: &'a Vec<i32>,
 }
@@ -514,6 +530,11 @@ fn print_coordinates(&(x,y): &(i32,i32)){
 }
 
 fn main() {
+    let ht: HouseThief_BottomUp = HouseThief_BottomUp{
+        // worth_to_steal: &mut vec![6,7,1,30,8,2,4],
+        worth_to_steal: &mut vec![20,5,1,13,6,11,40],
+    };
+    println!("{}", ht.findMaxSteal(&ht.worth_to_steal));
 
     // let x = Some(5);
     let x = None;
