@@ -538,6 +538,13 @@ fn main() {
        _ => println!("anything"),
    } 
 
+   let x3 = 5;
+
+   match x3 {
+         1 ... 5 => println!("one through five"),
+         _ => println!("anything"),
+   }
+
     let ht: HouseThief_BottomUp = HouseThief_BottomUp{
         // worth_to_steal: &mut vec![6,7,1,30,8,2,4],
         worth_to_steal: &mut vec![20,5,1,13,6,11,40],
