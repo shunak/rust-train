@@ -530,6 +530,14 @@ fn print_coordinates(&(x,y): &(i32,i32)){
 }
 
 fn main() {
+    let x2 = 1;
+
+   match x2 {
+       1 | 2 => println!("one or two"),
+       3 => println!("three"),
+       _ => println!("anything"),
+   } 
+
     let ht: HouseThief_BottomUp = HouseThief_BottomUp{
         // worth_to_steal: &mut vec![6,7,1,30,8,2,4],
         worth_to_steal: &mut vec![20,5,1,13,6,11,40],
