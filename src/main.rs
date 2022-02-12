@@ -529,7 +529,22 @@ fn print_coordinates(&(x,y): &(i32,i32)){
     println!("Current location: ({},{})", x, y);
 }
 
+struct Point {
+    x: i32,
+    y: i32,
+}
 fn main() {
+    let p = Point { x: 0, y: 7 };
+    let Point { x: a, y: b } = p;
+    assert_eq!(0 ,a);
+    assert_eq!(7 ,b);
+
+
+
+
+
+
+
     let x2 = 1;
 
    match x2 {
