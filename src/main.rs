@@ -542,6 +542,35 @@ enum Message {
 }
 
 fn main() {
+    let msg = Message::ChangeColor(0,160,255);
+    
+    match msg {
+        Message::Quit => {
+            println!("The Quit variant has no data to destructure.")
+        },
+        Message::Move {x,y} => {
+            println!(
+                "Move in the x direction {} and in the y direction {}",
+                x,
+                y
+            );
+        }
+        Message::Write(text) => println!("Text meessage: {}", text),
+        Message::ChangeColor(r,g,b) => {
+            println!("Change the color to red {}, green {}, and blue {}",
+            r,
+            g,
+            b
+         )
+        }
+    }
+    
+
+
+
+
+
+
     let p = Point { x: 0, y: 7 };
     // let Point { x: a, y: b } = p;
     let Point { x, y} = p;
