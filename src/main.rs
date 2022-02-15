@@ -542,6 +542,13 @@ enum Message {
 }
 
 fn main() {
+    let points = vec![
+        Point{x: 0, y: 0},
+        Point{x: 1, y: 5},
+        Point{x: 10, y: -3},
+    ];
+
+
     let msg = Message::ChangeColor(0,160,255);
     
     match msg {
