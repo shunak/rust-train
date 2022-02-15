@@ -17,6 +17,7 @@ use std::time::Duration;
 use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
 use std::vec;
+use std::option::Option;
 // use std::ops;
 // use std::vec;
 // use std::ops::Index<isize>;
@@ -36,6 +37,44 @@ use std::vec;
 //     fn draw(&self){
 //     }
 // }
+
+struct ConvertOneStringToAnother_TD<'a> {
+    s1: &'a str,
+    s2: &'a str,
+}
+impl <'a> ConvertOneStringToAnother_TD<'a> {
+    pub fn findMinOperations(&self, s1: &'a str, s2: &'a str) -> i32 {
+        // let dp = &mut [[0; 6]; 6];
+        let dp = &mut vec![vec![0; s1.len() + 1]; s2.len() + 1];
+        return self.findMinOperationsRecursive(dp, s1, s2, 0, 0);
+    }
+    // fn findMinOperationsRecursive(&self, dp: &mut [[i32;6];6], s1: &'a str, s2: &'a str, i: usize, j: usize) -> i32 {
+    fn findMinOperationsRecursive(&self, dp: &mut Vec<Vec<i32>>, s1: &'a str, s2: &'a str, i: usize, j: usize) -> i32 {
+        // let mut nullable_array: Option<i32> = None;
+        // let nullable_array: Option<i32> = Some(dp[i][j]);
+        // nullable_array = Some(dp[i][j]);
+        // if nullable_array == None {
+        // if Some(dp[i][j]) == None {
+        if dp[i][j] == 0 {
+            if i == s1.len() {
+                dp[i][j] = s2.len() as i32 - j as i32;
+            }else if j == s2.len() {
+                dp[i][j] = s1.len() as i32 - i as i32;
+            }else if s1.chars().nth(i) == s2.chars().nth(j) {
+                dp[i][j] = self.findMinOperationsRecursive(dp, s1, s2, i+1, j+1);
+            }
+        }else{
+            // It seems that this route is wrong.... Need investigating.
+             let c1 = self.findMinOperationsRecursive(dp, s1, s2, i+1, j);
+             let c2 = self.findMinOperationsRecursive(dp, s1, s2, i, j+1);
+             let c3 = self.findMinOperationsRecursive(dp, s1, s2, i+1, j+1);
+             dp[i][j] = 1 + std::cmp::min(c1, std::cmp::min(c2, c3));
+        }   
+        return dp[i][j];
+    }
+}
+
+
 
 
 struct HouseThief_BottomUp<'a>{
@@ -542,11 +581,20 @@ enum Message {
 }
 
 fn main() {
+<<<<<<< HEAD
     let points = vec![
         Point{x: 0, y: 0},
         Point{x: 1, y: 5},
         Point{x: 10, y: -3},
     ];
+=======
+    let cost: ConvertOneStringToAnother_TD = ConvertOneStringToAnother_TD{
+        s1: &String::from("table"),
+        s2: &String::from("tbres"),
+    };
+    println!("{}", cost.findMinOperations(cost.s1, cost.s2));
+
+>>>>>>> dbe7e1e2cb42da02920a55f0b57fc687de4aa2aa
 
 
     let msg = Message::ChangeColor(0,160,255);
