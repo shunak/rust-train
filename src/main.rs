@@ -581,20 +581,16 @@ enum Message {
 }
 
 fn main() {
-<<<<<<< HEAD
     let points = vec![
         Point{x: 0, y: 0},
         Point{x: 1, y: 5},
         Point{x: 10, y: -3},
     ];
-=======
-    let cost: ConvertOneStringToAnother_TD = ConvertOneStringToAnother_TD{
-        s1: &String::from("table"),
-        s2: &String::from("tbres"),
-    };
-    println!("{}", cost.findMinOperations(cost.s1, cost.s2));
 
->>>>>>> dbe7e1e2cb42da02920a55f0b57fc687de4aa2aa
+    let sum_f_squares: i32 = points.iter().map(|&Point{x,y}| x*x + y*y).sum();
+
+    println!("{}", sum_f_squares);
+    
 
 
     let msg = Message::ChangeColor(0,160,255);
