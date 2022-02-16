@@ -84,21 +84,21 @@ impl<'a> ConvertOneStringToAnother_TD<'a> {
         // nullable_array = Some(dp[i][j]);
         // if nullable_array == None {
         // if Some(dp[i][j]) == None {
-        if dp[i][j] == 0 {
+        // if dp[i][j] == 0 {
             if i == s1.len() {
                 dp[i][j] = s2.len() as i32 - j as i32;
             }else if j == s2.len() {
                 dp[i][j] = s1.len() as i32 - i as i32;
             }else if s1.chars().nth(i) == s2.chars().nth(j) {
-                dp[i][j] = self.findMinOperationsRecursive(dp, s1, s2, i+1, j+1);
-            }
-        }else{
-            // It seems that this route is wrong.... Need investigating.
-             let c1 = self.findMinOperationsRecursive(dp, s1, s2, i+1, j);
-             let c2 = self.findMinOperationsRecursive(dp, s1, s2, i, j+1);
-             let c3 = self.findMinOperationsRecursive(dp, s1, s2, i+1, j+1);
+                dp[i][j] = self.findMinOperationsRecursive(dp, s1, s2, i+1, j+1); // move to next char
+            }else{
+        // }else{
+             let c1 = self.findMinOperationsRecursive(dp, s1, s2, i+1, j);// delete
+             let c2 = self.findMinOperationsRecursive(dp, s1, s2, i, j+1);// insert
+             let c3 = self.findMinOperationsRecursive(dp, s1, s2, i+1, j+1);// replace
              dp[i][j] = 1 + std::cmp::min(c1, std::cmp::min(c2, c3));
-        }   
+        // }   
+            }
         return dp[i][j];
     }
 }
@@ -610,6 +610,13 @@ enum Message {
 }
 
 fn main() {
+let costTu: ConvertOneStringToAnother_TD = ConvertOneStringToAnother_TD{
+    s1: &String::from("table"),
+    s2: &String::from("tbres"),
+};
+println!("{}", costTu.findMinOperations(costTu.s1, costTu.s2));
+
+
 let costBu: ConvertOneStringToAnother_BU = ConvertOneStringToAnother_BU {
     s1: &String::from("table"),
     s2: &String::from("tbres"),
