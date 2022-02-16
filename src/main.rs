@@ -38,11 +38,40 @@ use std::option::Option;
 //     }
 // }
 
+struct ConvertOneStringToAnother_BU<'a>{
+    s1: &'a str,
+    s2: &'a str,
+}
+impl<'a> ConvertOneStringToAnother_BU<'a> {
+    pub fn findMinOperations(&self, s1: &'a str, s2: &'a str) -> i32 {
+        let dp = &mut vec![vec![0; s2.len() + 1]; s1.len() + 1];
+
+        for i in 0..s1.len() { // If we have reached the end of the s1, then insert all the remaining characters of s2
+            dp[i][0] = i as i32;
+        }
+        for j in 0..s2.len() { // If we have reached the end of the s2, then delete all the remaining characters of s1
+            dp[0][j] = j as i32;
+        }
+        // Traverse through all characters
+        for i in 1..s1.len() + 1 {
+            for j in 1..s2.len() + 1 { // If the strings have a matching character, recursively match for the remaining lengths.
+                if s1.chars().nth(i - 1) == s2.chars().nth(j-1){
+                    dp[i][j] = dp[i-1][j-1]; // nothing to do 
+                }else{
+                    dp[i][j] = 1 + std::cmp::min(dp[i-1][j], //delete
+                        std::cmp::min(dp[i][j-1], //insert
+                    dp[i-1][j-1])); //replace
+                }        
+            }
+        }
+        return dp[s1.len()][s2.len()];
+    }
+}
 struct ConvertOneStringToAnother_TD<'a> {
     s1: &'a str,
     s2: &'a str,
 }
-impl <'a> ConvertOneStringToAnother_TD<'a> {
+impl<'a> ConvertOneStringToAnother_TD<'a> {
     pub fn findMinOperations(&self, s1: &'a str, s2: &'a str) -> i32 {
         // let dp = &mut [[0; 6]; 6];
         let dp = &mut vec![vec![0; s1.len() + 1]; s2.len() + 1];
@@ -581,6 +610,18 @@ enum Message {
 }
 
 fn main() {
+let costBu: ConvertOneStringToAnother_BU = ConvertOneStringToAnother_BU {
+    s1: &String::from("table"),
+    s2: &String::from("tbres"),
+};
+println!("{}", costBu.findMinOperations(costBu.s1, costBu.s2));
+
+
+
+
+
+
+
     let points = vec![
         Point{x: 0, y: 0},
         Point{x: 1, y: 5},
