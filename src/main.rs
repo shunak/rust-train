@@ -609,7 +609,18 @@ enum Message {
     ChangeColor(i32,i32,i32),
 }
 
+fn foo(_: i32, y:i32){
+    println!("This code only uses the y parameter: {}",y);
+}
+
 fn main() {
+foo(3,4);
+
+
+let((feet, inches), Point{x,y}) = ((3,10), Point{x:3,y:4});
+
+
+
 let costTu: ConvertOneStringToAnother_TD = ConvertOneStringToAnother_TD{
     s1: &String::from("table"),
     s2: &String::from("tbres"),
@@ -638,7 +649,7 @@ println!("{}", costBu.findMinOperations(costBu.s1, costBu.s2));
     let sum_f_squares: i32 = points.iter().map(|&Point{x,y}| x*x + y*y).sum();
 
     println!("{}", sum_f_squares);
-    
+
 
 
     let msg = Message::ChangeColor(0,160,255);
