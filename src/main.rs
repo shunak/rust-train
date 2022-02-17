@@ -615,6 +615,17 @@ fn foo(_: i32, y:i32){
 
 fn main() {
 
+let numbers = (2, 4, 8, 16, 32);
+match numbers {
+    (first, _, third, _, fifth)=>{
+        println!("Some numbers: {}, {}, {}", first, third, fifth);
+    },
+}
+
+
+
+
+
 let mut setting_value = Some(5);
 let new_setting_value = Some(10);
 
