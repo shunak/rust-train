@@ -614,6 +614,8 @@ fn foo(_: i32, y:i32){
 }
 
 fn main() {
+    let _x = 5;
+    let y = 10;
 
 let numbers = (2, 4, 8, 16, 32);
 match numbers {
