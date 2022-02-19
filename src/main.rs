@@ -614,6 +614,15 @@ fn foo(_: i32, y:i32){
 }
 
 fn main() {
+
+let s = Some(String::from("Hello!"));
+if let Some(_) = s {
+    println!("found a string!");
+}
+println!("{:?}", s);
+
+
+
     let _x = 5;
     let y = 10;
 
