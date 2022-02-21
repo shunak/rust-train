@@ -613,15 +613,27 @@ fn foo(_: i32, y:i32){
     println!("This code only uses the y parameter: {}",y);
 }
 
+struct Point2 {
+    x: i32,
+    y: i32,
+    z: i32,
+}
+
+
 fn main() {
+
+let origin = Point2 { x: 0, y: 0, z: 0 };
+
+match origin {
+    Point2 {x, .. } => println!("x is {}", x),
+}
+
 
 let s = Some(String::from("Hello!"));
 if let Some(_) = s {
     println!("found a string!");
 }
 println!("{:?}", s);
-
-
 
     let _x = 5;
     let y = 10;
