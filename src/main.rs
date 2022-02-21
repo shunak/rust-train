@@ -613,7 +613,7 @@ fn foo(_: i32, y:i32){
     println!("This code only uses the y parameter: {}",y);
 }
 
-struct Point2 {
+struct Point3 {
     x: i32,
     y: i32,
     z: i32,
@@ -622,11 +622,21 @@ struct Point2 {
 
 fn main() {
 
-let origin = Point2 { x: 0, y: 0, z: 0 };
+let robot_name = Some(String::from("Bors"));
 
-match origin {
-    Point2 {x, .. } => println!("x is {}", x),
+match robot_name {
+    Some(ref name) => println!("Found a name: {}",name),
+    None => (),
 }
+
+println!("robot_name is: {:?}", robot_name);
+
+
+// let origin = Point3 { x: 0, y: 0, z: 0};
+
+// match origin {
+//     Point3 {x, .. } => println!("x is {}", x),
+// }
 
 
 let s = Some(String::from("Hello!"));
