@@ -612,7 +612,6 @@ enum Message {
 fn foo(_: i32, y:i32){
     println!("This code only uses the y parameter: {}",y);
 }
-
 struct Point3 {
     x: i32,
     y: i32,
@@ -621,6 +620,10 @@ struct Point3 {
 
 
 fn main() {
+
+    enum Message {
+        Hello {id: i32},
+    }
 
     let x = 4;
     let y =false;
