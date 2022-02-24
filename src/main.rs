@@ -621,9 +621,14 @@ struct Point3 {
 
 fn main() {
 
-    enum Message {
+    enum Message2 {
         Hello {id: i32},
     }
+
+    let msg = Message2::Hello { id: 5 };
+
+
+
 
     let x = 4;
     let y =false;
