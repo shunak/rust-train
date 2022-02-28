@@ -68,7 +68,6 @@ impl ZeroOneKnapsack_DP_TD {
 }
 
 
-
 struct ConvertOneStringToAnother_BU<'a>{
     s1: &'a str,
     s2: &'a str,
