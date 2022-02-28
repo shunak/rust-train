@@ -38,6 +38,37 @@ use std::option::Option;
 //     }
 // }
 
+struct ZeroOneKnapsack_DP_TD {
+    profits: Vec<i32>,
+    weights: Vec<i32>,
+    capacity: i32,
+}
+impl ZeroOneKnapsack_DP_TD {
+    pub fn knapsack(&self, profits: &Vec<i32>, weights: &Vec<i32>, capacity:i32) -> i32 {
+        // let mut dp: Vec<Vec<i32>> = vec![vec![0; profits.len()]; capacity as usize + 1];
+        let mut dp: &mut Vec<Vec<i32>> = &mut vec![vec![0; capacity as usize + 1]; profits.len()];
+        return self.knapsackAux(dp, profits, weights, capacity, 0); 
+    }    
+    
+    fn knapsackAux(&self, dp: &mut Vec<Vec<i32>>, profits: &Vec<i32>, weights: &Vec<i32>, capacity: i32, currentIndex: i32) -> i32 {
+        if capacity <= 0 || currentIndex < 0 || currentIndex >= profits.len() as i32 { //Base case
+            return 0;
+        }
+        if dp[currentIndex as usize ][capacity as usize] != 0 { // If we have already solved this problem, then return the result from memory
+            return dp[currentIndex as usize ][capacity as usize];
+        }
+        let mut profit1 = 0;
+        if weights[currentIndex as usize ] <= capacity { // Taking current item
+            profit1 = profits[currentIndex as usize ] + self.knapsackAux(dp, profits, weights, capacity - weights[currentIndex as usize ], currentIndex + 1);
+        }
+        let profit2 = self.knapsackAux(dp, profits, weights, capacity, currentIndex + 1); // Not taking current item
+        dp[currentIndex as usize ][capacity as usize] = std::cmp::max(profit1, profit2);
+        return dp[currentIndex as usize ][capacity as usize];
+    }
+}
+
+
+
 struct ConvertOneStringToAnother_BU<'a>{
     s1: &'a str,
     s2: &'a str,
@@ -620,6 +651,14 @@ struct Point3 {
 
 
 fn main() {
+    let kpskdp: ZeroOneKnapsack_DP_TD = ZeroOneKnapsack_DP_TD {
+        profits: vec![31,26,72,17],
+        weights: vec![3,1,5,2],
+        capacity: 7,
+    };
+    println!("{}", kpskdp.knapsack(&kpskdp.profits, &kpskdp.weights, kpskdp.capacity));
+
+
 
     enum Message2 {
         Hello {id: i32},
