@@ -38,6 +38,44 @@ use std::option::Option;
 //     }
 // }
 
+struct LongestCommonSubsequenceDP_TD{
+    s1: String,
+    s2: String,
+}
+impl LongestCommonSubsequenceDP_TD {
+    pub fn findLCSLength(&self, s1: &String, s2: &String) -> i32{
+        let dp: &mut Vec<Vec<i32>> = &mut vec![vec![-1; s2.len()]; s1.len()]; //dp table will store all the results
+        return self.findLCSLengthAux(dp, s1, s2, 0, 0);
+    }
+
+    fn findLCSLengthAux(&self, dp: &mut Vec<Vec<i32>>, s1: &String, s2: &String, i: usize, j: usize) -> i32{
+        if i == s1.len() || j == s2.len(){ // Base Case
+            return 0;
+        }
+        if dp[i][j] != -1{ //if we have not already solved this subproblem, only then solve it
+            return dp[i][j];
+        }
+        if s1.chars().nth(i) == s2.chars().nth(j){
+            dp[i][j] = 1 + self.findLCSLengthAux(dp, &s1, &s2, i+1, j+1);// If current character in both the string matches, then increase the index by 1 in both the strings.
+        }
+        else{ // Increase index of 2nd String, Increase index of 1st String
+            dp[i][j] = std::cmp::max(self.findLCSLengthAux(dp, &s1, &s2, i+1, j), self.findLCSLengthAux(dp, &s1, &s2, i, j+1));
+        }
+        return dp[i][j];
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 struct ZeroOneKnapsack_DP_TD {
     profits: Vec<i32>,
     weights: Vec<i32>,
@@ -650,11 +688,16 @@ struct Point3 {
 
 
 fn main() {
+    let lcsdptd: LongestCommonSubsequenceDP_TD = LongestCommonSubsequenceDP_TD {
+        s1: String::from("houdini"),
+        s2: String::from("huind"),
+    };
+    println!("{}", lcsdptd.findLCSLength(&lcsdptd.s1, &lcsdptd.s2));
+
+
     let mut num = 5;
     let r1 = &num as *const i32;
     let r2 = &mut num as *mut i32;
-
-
 
     enum Message2 {
         Hello {id: i32},
