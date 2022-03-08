@@ -687,6 +687,20 @@ struct Point3 {
 
 
 fn main() {
+    // let adderss = 0x012345usize;
+    // let r = address as *const i32;
+
+    let mut num = 5;
+
+    let r1 = &num as *const i32;
+    let r2 = &mut num as *mut i32;
+
+    unsafe {
+        println!("r1 is: {}", *r1);
+        println!("r2 is: {}", *r2);
+    }
+
+
     let lcsdptd: LongestCommonSubsequenceDP_TD = LongestCommonSubsequenceDP_TD {
         s1: String::from("houdini"),
         s2: String::from("huind"),
