@@ -762,7 +762,6 @@ fn main() {
     };
     println!("Longest Palindromic Substring: {}",lpsqdptd.findLPSLength(&lpsqdptd.st));
 
-
     let lpsdptd = LongestPalindromicSubsequenceDP_TD{
         sentence: String::from("elrmenmet"),
     };
