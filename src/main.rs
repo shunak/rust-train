@@ -38,6 +38,37 @@ use std::option::Option;
 //     }
 // }
 
+
+struct LongestPalindromicSubsequenceDP_TD{
+    sentence: String,
+}
+impl LongestPalindromicSubsequenceDP_TD {
+    pub fn findLPSLength(&self, sentence: &str) -> i32 {
+        let dp: &mut Vec<Vec<i32>> = &mut vec![vec![0; sentence.len()]; sentence.len()];
+        return self.lps_Aux(dp, sentence, 0, sentence.len() as i32 - 1);
+    }
+    fn lps_Aux(&self, dp: &mut Vec<Vec<i32>>, sentence: &str, startIdx: i32, endIdx: i32) -> i32 {
+        if startIdx > endIdx {// Base Case If we have traversed more than 1/2 of string then return 0 as we dont need to process it
+            return 0;
+        }
+        if startIdx == endIdx {// Base Case If both the index are at same position then its a palindrome as its 1 character.
+            println!("{}", startIdx);
+            println!("{}", endIdx);
+            return 1;
+        }
+        let mut c3 = 0;
+        if dp[startIdx as usize][endIdx as usize] == 0 { // If we have not solved this problem previously, only then solve it
+            if sentence.chars().nth(startIdx as usize) == sentence.chars().nth(endIdx as usize) {
+                c3 = 2 + self.lps_Aux(dp, sentence, startIdx+1, endIdx-1);// CASE#1 If index pointed characters matches then we add 2 to the existing known palindrome length
+            } 
+                let c1 = self.lps_Aux(dp, sentence, startIdx+1, endIdx);// CASE#2 Skip one element from beginning
+                let c2 = self.lps_Aux(dp, sentence, startIdx, endIdx-1);// CASE#3 Skip one element from end
+                dp[startIdx as usize][endIdx as usize] = std::cmp::max(c3, std::cmp::max(c1,c2));// Take the max sized palindrome
+        }
+        return dp[startIdx as usize][endIdx as usize];
+    }
+}
+
 struct LongestCommonSubsequenceDP_TD{
     s1: String,
     s2: String,
@@ -688,6 +719,14 @@ struct Point3 {
 
 
 fn main() {
+    let lpsdptd = LongestPalindromicSubsequenceDP_TD{
+        sentence: String::from("elrmenmet"),
+    };
+    println!("Longest Palindromic Sequence: {}",lpsdptd.findLPSLength(&lpsdptd.sentence));
+
+
+
+
     let lcsdptd: LongestCommonSubsequenceDP_TD = LongestCommonSubsequenceDP_TD {
         s1: String::from("houdini"),
         s2: String::from("huind"),
