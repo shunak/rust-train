@@ -729,7 +729,6 @@ impl List {
         }
     }
 
-
 fn print_coordinates(&(x,y): &(i32,i32)){
     println!("Current location: ({},{})", x, y);
 }
@@ -757,6 +756,20 @@ struct Point3 {
 
 
 fn main() {
+<<<<<<< HEAD
+    // let adderss = 0x012345usize;
+    // let r = address as *const i32;
+
+    let mut num = 5;
+
+    let r1 = &num as *const i32;
+    let r2 = &mut num as *mut i32;
+
+    unsafe {
+        println!("r1 is: {}", *r1);
+        println!("r2 is: {}", *r2);
+    }
+=======
     let lpsqdptd = LongestPalindromicSubstringDP_TD{
         st: String::from("ABCCBUA"),
     };
@@ -766,6 +779,7 @@ fn main() {
         sentence: String::from("elrmenmet"),
     };
     println!("Longest Palindromic Sequence: {}",lpsdptd.findLPSLength(&lpsdptd.sentence));
+>>>>>>> bf7b0d2d5fbb2d201e2f2e6d1b63185133b28c8f
 
 
     let lcsdptd: LongestCommonSubsequenceDP_TD = LongestCommonSubsequenceDP_TD {
