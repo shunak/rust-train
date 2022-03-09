@@ -756,6 +756,13 @@ struct Point3 {
 
 
 fn main() {
+
+    unsafe fn dangerous() {}
+    unsafe {
+        dangerous();
+    }
+
+
     let lpsqdptd = LongestPalindromicSubstringDP_TD{
         st: String::from("ABCCBUA"),
     };
