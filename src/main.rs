@@ -39,6 +39,46 @@ use std::option::Option;
 // }
 
 
+
+
+struct LongestPalindromicSubstringDP_TD{
+    st: String,
+}
+impl LongestPalindromicSubstringDP_TD{
+    pub fn findLPSLength(&self, st: &str)-> i32{
+        let dp: &mut Vec<Vec<i32>> = &mut vec![vec![0; st.len()]; st.len()];
+        return self.lps_aux(dp, st, 0, st.len() as i32 -1);
+    }
+    fn lps_aux(&self, dp: &mut Vec<Vec<i32>>, st: &str, startIdx: i32, endIdx: i32)-> i32 {
+        if startIdx > endIdx {
+            return 0;
+        }
+        if startIdx == endIdx {
+            return 1;
+        } 
+        let mut c1 = 0;
+        if dp[startIdx as usize][endIdx as usize] == 0 {
+            if st.chars().nth(startIdx as usize) == st.chars().nth(endIdx as usize) {
+                let remainingLength = endIdx - startIdx -1;
+
+                if remainingLength == self.lps_aux(dp, st, startIdx + 1, endIdx -1) {
+                    c1 = remainingLength + 2;
+                }
+            }
+            let c2 = self.lps_aux(dp, st, startIdx+1, endIdx);
+            let c3 = self.lps_aux(dp, st, startIdx, endIdx-1);
+            dp[startIdx as usize][endIdx as usize] = std::cmp::max(c1, std::cmp::max(c2, c3));
+        }
+        return dp[startIdx as usize][endIdx as usize];
+    }
+}
+
+
+
+
+
+
+
 struct LongestPalindromicSubsequenceDP_TD{
     sentence: String,
 }
@@ -52,8 +92,6 @@ impl LongestPalindromicSubsequenceDP_TD {
             return 0;
         }
         if startIdx == endIdx {// Base Case If both the index are at same position then its a palindrome as its 1 character.
-            println!("{}", startIdx);
-            println!("{}", endIdx);
             return 1;
         }
         let mut c3 = 0;
@@ -719,12 +757,16 @@ struct Point3 {
 
 
 fn main() {
+    let lpsqdptd = LongestPalindromicSubstringDP_TD{
+        st: String::from("ABCCBUA"),
+    };
+    println!("Longest Palindromic Substring: {}",lpsqdptd.findLPSLength(&lpsqdptd.st));
+
+
     let lpsdptd = LongestPalindromicSubsequenceDP_TD{
         sentence: String::from("elrmenmet"),
     };
     println!("Longest Palindromic Sequence: {}",lpsdptd.findLPSLength(&lpsdptd.sentence));
-
-
 
 
     let lcsdptd: LongestCommonSubsequenceDP_TD = LongestCommonSubsequenceDP_TD {
