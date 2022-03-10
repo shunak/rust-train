@@ -754,8 +754,36 @@ struct Point3 {
     z: i32,
 }
 
+extern "C" {
+    fn abs(input: i32) -> i32;
+}
+
+
+static mut COUNTER: u32 =0;
+
+fn add_to_count(inc:i32){
+    unsafe {
+        COUNTER += inc as u32;
+    }
+}
 
 fn main() {
+    
+    add_to_count(3);
+
+    unsafe{
+        println!("COUNTER: {}", COUNTER);
+    }
+
+
+
+    unsafe {
+        println!("Absolute value of -3 according to C: {}", abs(-3));
+    }
+
+
+
+
 
     unsafe fn dangerous() {}
     unsafe {
