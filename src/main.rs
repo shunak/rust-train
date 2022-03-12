@@ -766,7 +766,6 @@ fn add_to_count(inc:i32){
         COUNTER += inc as u32;
     }
 }
-
 fn main() {
     
     add_to_count(3);
