@@ -18,6 +18,7 @@ use std::sync::mpsc;
 use std::sync::{Mutex, Arc};
 use std::vec;
 use std::option::Option;
+use std::ops::Add;
 // use std::ops;
 // use std::vec;
 // use std::ops::Index<isize>;
@@ -765,7 +766,24 @@ fn add_to_count(inc:i32){
         COUNTER += inc as u32;
     }
 }
+
+#[derive(Debug, PartialEq)]
+struct Point2 {
+    x: i32,
+    y: i32,
+}
+impl Add for Point2 {
+    type Output = Point2;
+
+    fn add(self, other: Point2) -> Point2 {
+        Point2 {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
+}
 fn main() {
+    assert_eq!(Point2 {x: 1, y: 0} + Point2 {x: 2, y: 3}, Point2 {x: 3, y: 3});
     
     add_to_count(3);
 
