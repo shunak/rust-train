@@ -758,7 +758,6 @@ extern "C" {
     fn abs(input: i32) -> i32;
 }
 
-
 static mut COUNTER: u32 =0;
 
 fn add_to_count(inc:i32){
