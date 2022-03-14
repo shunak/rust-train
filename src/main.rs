@@ -768,22 +768,22 @@ fn add_to_count(inc:i32){
 }
 
 #[derive(Debug, PartialEq)]
-struct Point2 {
+struct Points {
     x: i32,
     y: i32,
 }
-impl Add for Point2 {
-    type Output = Point2;
+impl Add for Points {
+    type Output = Points;
 
-    fn add(self, other: Point2) -> Point2 {
-        Point2 {
+    fn add(self, other: Points) -> Points {
+        Points {
             x: self.x + other.x,
             y: self.y + other.y,
         }
     }
 }
 fn main() {
-    assert_eq!(Point2 {x: 1, y: 0} + Point2 {x: 2, y: 3}, Point2 {x: 3, y: 3});
+    assert_eq!(Points {x: 1, y: 0} + Points {x: 2, y: 3}, Points {x: 3, y: 3});
     
     add_to_count(3);
 
