@@ -39,6 +39,34 @@ use std::ops::Add;
 //     }
 // }
 
+struct MinCostToReachLastCell_in2DArray_TD<'a>{
+    array: &'a Vec<Vec<i32>>,
+}
+impl <'a>MinCostToReachLastCell_in2DArray_TD<'a> {
+    fn findMinCost(&self, array: &Vec<Vec<i32>>, row: i32, col: i32) -> i32 {
+        let dp = &mut vec![vec![0; col as usize + 1]; row as usize + 1];
+        return self.findMinCost_aux(dp, array, row, col);
+    }
+
+    fn findMinCost_aux(&self, dp: &mut Vec<Vec<i32>>, array: &Vec<Vec<i32>>, row: i32, col: i32) -> i32 {
+        if row == -1 || col == -1 {
+            return std::i32::MAX;
+        }
+        if row == 0 && col == 0 {
+            return array[row as usize][col as usize];
+        }
+        if dp[row as usize][col as usize] == 0 {
+
+            let minCost1 = self.findMinCost_aux(dp, array, row - 1, col);
+            let minCost2 = self.findMinCost_aux(dp, array, row, col - 1);
+            let minCost = std::cmp::min(minCost1, minCost2);
+            let currentCellCost = array[row as usize][col as usize];
+            dp[row as usize][col as usize] = currentCellCost + minCost;
+        }
+        return dp[row as usize][col as usize];
+    }
+}
+
 
 
 
@@ -783,6 +811,22 @@ impl Add for Points {
     }
 }
 fn main() {
+    let mctrlc_td: MinCostToReachLastCell_in2DArray_TD = MinCostToReachLastCell_in2DArray_TD{
+        array: &vec![
+            vec![4,7,8,6,4],
+            vec![6,7,3,9,2],
+            vec![3,8,1,2,4],
+            vec![7,1,7,3,7],
+            vec![2,9,8,9,3],
+        ],
+    };
+    println!("The minimum cost is {:?}", mctrlc_td.findMinCost(mctrlc_td.array, mctrlc_td.array.len() as i32 - 1 , mctrlc_td.array[0].len() as i32 - 1));
+
+
+
+
+
+
     assert_eq!(Points {x: 1, y: 0} + Points {x: 2, y: 3}, Points {x: 3, y: 3});
     
     add_to_count(3);
