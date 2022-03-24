@@ -810,9 +810,8 @@ impl Add for Points {
         }
     }
 }
-fn main() {
 
-    trait Pilot {
+   trait Pilot {
         fn fly(&self);
     }
     trait Wizard {
@@ -834,6 +833,13 @@ fn main() {
             println!("*waving arms furiously*");
         }
     }
+
+fn main() {
+
+    let person = Human;
+    Pilot::fly(&person);
+    Wizard::fly(&person);
+    person.fly();
 
 
 
