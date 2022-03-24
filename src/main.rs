@@ -811,6 +811,17 @@ impl Add for Points {
     }
 }
 fn main() {
+
+    trait Pilot {
+        fn fly(&self);
+    }
+    trait Wizard {
+        fn fly(&self);
+    }
+
+
+
+
     let mctrlc_td: MinCostToReachLastCell_in2DArray_TD = MinCostToReachLastCell_in2DArray_TD{
         array: &vec![
             vec![4,7,8,6,4],
