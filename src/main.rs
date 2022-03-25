@@ -69,7 +69,6 @@ impl <'a>MinCostToReachLastCell_in2DArray_TD<'a> {
 
 
 
-
 struct LongestPalindromicSubstringDP_TD{
     st: String,
 }
