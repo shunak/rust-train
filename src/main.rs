@@ -810,6 +810,14 @@ impl Add for Points {
     }
 }
 
+impl fmt::Display for Points {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "({}, {})", self.x, self.y)
+    }
+}
+
+
+impl OutlinePrint for Points {}
    trait Pilot {
         fn fly(&self);
     }
@@ -851,10 +859,36 @@ impl Add for Points {
         }
     }
 
+trait OutlinePrint: fmt::Display {
+    fn outline_print(&self) {
+        let output = self.to_string();
+        let len = output.len();
+        println!("{}", "*".repeat(len + 4));
+        println!("*{}*", " ".repeat(len + 2));
+        println!("* {} *", output);
+        println!("*{}*", " ".repeat(len + 2));
+        println!("{}", "*".repeat(len + 4));
+    }
+}
+
+struct Wrapper(Vec<String>);
+
+impl fmt::Display for Wrapper {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "[{}]", self.0.join(", "))
+    }
+}
+
+    
 fn main() {
+    let w = Wrapper(vec![String::from("hello"), String::from("world")]);
+    println!("w = {}", w);
 
+    let pst = Points {x: 1, y: 3};
 
-    println!("A baby dog is called a {}", Dog::baby_name());
+    pst.outline_print();
+
+    println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
 
 
     let person = Human;
