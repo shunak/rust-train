@@ -881,6 +881,13 @@ impl fmt::Display for Wrapper {
 
     
 fn main() {
+
+    type Kilometers = i32;
+    let x: i32 = 5;
+    let y: Kilometers = 5;
+    println!("x + y = {}", x + y);
+
+
     let w = Wrapper(vec![String::from("hello"), String::from("world")]);
     println!("w = {}", w);
 
