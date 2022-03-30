@@ -39,6 +39,41 @@ use std::ops::Add;
 //     }
 // }
 
+struct NumberOfPathsToReachLastCell_TD<'a> {
+    array: &'a Vec<Vec<i32>>,
+    cost: i32,
+}
+impl <'a>NumberOfPathsToReachLastCell_TD<'a> {
+    pub fn numberOfPaths(&self, array: &Vec<Vec<i32>>, row: i32, col: i32, cost: i32) -> i32{
+        let dp = &mut vec![vec![0; col as usize + 1]; row as usize + 1];
+        return self.numberOfPathsAux(dp, array, row, col, cost);
+    }
+    pub fn numberOfPathsAux(&self, dp: &mut Vec<Vec<i32>>, array: &Vec<Vec<i32>>, row: i32, col: i32, cost: i32) -> i32{
+        if cost < 0 {
+            return 0;
+        }
+        if row == 0 && col == 0{
+            let mut v: i32;
+            if array[0][0] - cost == 0 {v = 1} else {v = 0};
+            return v;
+        }
+        if dp[row as usize][col as usize] == 0 {
+            if row == 0 {
+                dp[row as usize][col as usize] = self.numberOfPaths(array, 0, col -1, cost - array[row as usize][col as usize]);
+            }else if col == 0 {
+                dp[row as usize][col as usize] = self.numberOfPaths(array, row -1, 0, cost - array[row as usize][col as usize]);
+            }else{
+                let numOfPathsFromPreviousRow = self.numberOfPaths(array, row -1, col, cost - array[row as usize][col as usize]);
+                let numOfPathsFromPreviousCol = self.numberOfPaths(array, row, col -1, cost - array[row as usize][col as usize]);
+                dp[row as usize][col as usize] = numOfPathsFromPreviousRow + numOfPathsFromPreviousCol; 
+            }
+        }
+        return dp[row as usize][col as usize];
+    } 
+}
+
+
+
 struct MinCostToReachLastCell_in2DArray_TD<'a>{
     array: &'a Vec<Vec<i32>>,
 }
@@ -881,6 +916,19 @@ impl fmt::Display for Wrapper {
 
     
 fn main() {
+
+    let noptrl_td: NumberOfPathsToReachLastCell_TD = NumberOfPathsToReachLastCell_TD{
+        array: &vec![
+            vec![4,7,1,6],
+            vec![5,7,3,9],
+            vec![3,2,1,2],
+            vec![7,1,6,3],
+        ],
+        cost: 25,
+    };
+    println!("Total paths with cost {} are {}",noptrl_td.cost, noptrl_td.numberOfPaths(noptrl_td.array, noptrl_td.array.len() as i32 -1, noptrl_td.array[0].len() as i32 -1, noptrl_td.cost));
+
+
 
     type Kilometers = i32;
     let x: i32 = 5;
