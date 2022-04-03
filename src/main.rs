@@ -924,6 +924,61 @@ fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
 
 
 fn main() {
+let mut temp_vec = Vec::new();
+temp_vec.push(1);
+temp_vec.push(2);
+temp_vec.push(3);
+println!("{}", temp_vec);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     let list_of_numbers = vec![1,2,3];
     let list_of_strings: Vec<String> = list_of_numbers.iter().map(|x| x.to_string()).collect();
     println!("{:?}", list_of_numbers);
