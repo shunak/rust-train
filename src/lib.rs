@@ -1,6 +1,13 @@
 use std::fmt::Display;
 use std::env;
 use std::ops::Add;
+use proc_macro;
+
+
+#[some_attribute]
+pub fn some_name(input: TokenStream) -> TokenStream {}
+
+
 
 struct Millimeters(u32);
 struct Meters(u32);
